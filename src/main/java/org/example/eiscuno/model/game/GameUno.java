@@ -101,6 +101,63 @@ public class GameUno implements IGameUno {
         // Inicializa el color actual de la carta en la mesa como `null` (sin color asignado al inicio).
     }
 
+    public void initializeStartCard() {
+        // pública vacío inicializarCartaInicial()
+        // Método público que inicializa la carta inicial del juego asegurando que sea numérica (del 0 al 9).
+
+        if (table.isEmpty()) {
+            // si (mesa.estáVacía())
+            // Verifica si la mesa no tiene ninguna carta en ese momento.
+
+            Card startCard;
+            // Carta cartaInicial;
+            // Declara una variable para almacenar la carta inicial seleccionada.
+
+            // Bucle para asegurar que la carta inicial sea numérica (0-9)
+            do {
+                // hacer
+                // Inicia un bucle que se ejecutará al menos una vez.
+
+                startCard = deck.takeCard();
+                // cartaInicial = mazo.tomarCarta();
+                // Toma una carta de la parte superior del mazo.
+
+            } while (!isNumericCard(startCard));
+            // mientras (!esCartaNumerica(cartaInicial))
+            // Continúa tomando cartas hasta que encuentre una que sea numérica (0-9).
+
+            // Agregar la carta inicial a la mesa
+            table.addCardOnTheTable(startCard);
+            // mesa.agregarCartaEnLaMesa(cartaInicial);
+            // Agrega la carta numérica seleccionada a la mesa.
+
+            // Configurar la carta y el color actuales
+            currentTableCardColor = startCard.getColor();
+            // colorActualCartaMesa = cartaInicial.obtenerColor();
+            // Configura el color actual de la carta que está en la mesa.
+
+            System.out.println("Carta inicial (numérica): " + startCard.getColor() + " " + startCard.getValue());
+            // System.out.println("Carta inicial (numérica): " + cartaInicial.obtenerColor() + " " + cartaInicial.obtenerValor());
+            // Imprime en la consola el color y el valor de la carta inicial seleccionada.
+        }
+    }
+
+    // Método para verificar si una carta es numérica (0-9)
+    private boolean isNumericCard(Card card) {
+        // privada booleano esCartaNumerica(Carta carta)
+        // Método privado que verifica si la carta dada tiene un valor numérico entre 0 y 9.
+
+        String value = card.getValue();
+        // String valor = carta.obtenerValor();
+        // Obtiene el valor de la carta como una cadena de texto.
+
+        return value.matches("[0-9]");
+        // retornar valor.cumple("[0-9]");
+        // Comprueba si el valor de la carta coincide con un solo dígito (0-9) utilizando una expresión regular.
+    }
+
+
+
 
     //Inicia el juego de Uno.
     @Override
@@ -489,7 +546,7 @@ public class GameUno implements IGameUno {
         //int totalCartas = este.jugadorHumano.obtenerCartasJugador().tamaño()
         // Obtiene el número total de cartas que tiene el jugador humano.
 
-        int numVisibleCards = Math.min(4, totalCards - posInitCardToShow);
+        int numVisibleCards = Math.min(5, totalCards - posInitCardToShow);
         //int numCartasVisibles = Math.min(4, totalCartas - posiciónInicialCartaMostrar)
         // Calcula cuántas cartas se pueden mostrar, tomando el mínimo entre 4 cartas y las cartas restantes desde la posición inicial.
 
@@ -523,7 +580,7 @@ public class GameUno implements IGameUno {
         //int totalCartas = este.jugadorMáquina.obtenerCartasJugador().tamaño()
         // Obtiene el número total de cartas que tiene el jugador máquina.
 
-        int numVisibleCards = Math.min(4, totalCards);
+        int numVisibleCards = Math.min(5, totalCards);
         //int numCartasVisibles = Math.min(4, totalCartas)
         // Calcula cuántas cartas se pueden mostrar, tomando el mínimo entre 4 cartas y el total de cartas que tiene la máquina.
 

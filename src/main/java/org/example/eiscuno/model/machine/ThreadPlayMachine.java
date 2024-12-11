@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 // importar javafx.scene.image.ImageView
 // Importa la clase ImageView de JavaFX, utilizada para mostrar imágenes en la interfaz.
 
+import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.exception.UnoException;
 // importar org.example.eiscuno.model.exception.UnoException
 // Importa la clase UnoException para manejar excepciones específicas del juego Uno.
@@ -58,13 +59,15 @@ public class ThreadPlayMachine extends Thread {
     // private volatile boolean hasPlayerPlayed
     // Declara una bandera que indica si el jugador humano ha jugado su turno, sincronizada entre hilos.
 
-    public ThreadPlayMachine(EventManager eventManager, GameUno gameUno, Player machinePlayer, ImageView tableImageView) {
-        // public ThreadPlayMachine(EventManager eventManager, GameUno gameUno, Player machinePlayer, ImageView tableImageView)
-        // Constructor de ThreadPlayMachine que inicializa las instancias necesarias para controlar al jugador de máquina.
+    private GameUnoController controller;
+// Declara una referencia al controlador GameUnoController.
+
+    public ThreadPlayMachine(EventManager eventManager, GameUno gameUno, Player machinePlayer, ImageView tableImageView, GameUnoController controller) {
         this.eventManager = eventManager;
         this.gameUno = gameUno;
         this.machinePlayer = machinePlayer;
         this.tableImageView = tableImageView;
+        this.controller = controller; // Inicializa el controlador
         this.hasPlayerPlayed = false;
     }
 
@@ -79,6 +82,7 @@ public class ThreadPlayMachine extends Thread {
                 // if (hasPlayerPlayed)
                 // Comprueba si el jugador humano ya ha jugado su turno.
                 try {
+                    controller.visualShift(true);
                     Thread.sleep(2000);
                     // Thread.sleep(2000)
                     // Pausa el hilo durante 2 segundos antes de ejecutar la acción de la máquina.
@@ -106,7 +110,11 @@ public class ThreadPlayMachine extends Thread {
                     // putCardOnTheTable()
                     // Llama al método para que la máquina coloque una carta en la mesa.
                 }
+
+
                 eventManager.notifyListenersCardsMachinePlayerUpdate();
+
+                controller.visualShift(false);
                 // eventManager.notifyListenersCardsMachinePlayerUpdate()
                 // Notifica a los observadores que las cartas del jugador de máquina han sido actualizadas.
             }

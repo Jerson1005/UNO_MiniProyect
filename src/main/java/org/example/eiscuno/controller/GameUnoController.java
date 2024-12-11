@@ -32,6 +32,9 @@ import javafx.scene.layout.*;
 //importar javafx.escena.layout.*
 // Importa todas las clases de diseño (layout) de JavaFX.
 
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 //importar javafx.escenario.Stage
 // Importa la clase `Stage`, que representa una ventana principal en JavaFX.
@@ -163,7 +166,19 @@ public class GameUnoController {
     // ImageView que muestra la imagen actual de la mesa donde se colocan las cartas.
 
     @FXML
+    private Pane paneMachine;
+
+    @FXML
+    private Pane panePlayer;
+    
+    @FXML
     private Label LabelNotificacions;
+
+    @FXML
+    private Label numberMachineLetters;
+
+    @FXML
+    private Label numberPlayerLetters;
 
 
     private EventManager eventManager;
@@ -256,14 +271,20 @@ public class GameUnoController {
         //establecerVisuales()
         // Configura los elementos visuales iniciales de la interfaz.
 
+        // Aquí se invoca el turno del jugador
+        visualShift(false); // Turno del jugador
 
         initVariables();
         //inicializarVariables()
         // Inicializa las variables necesarias para el funcionamiento del juego.
 
+        showInitialCardOnTable();
+
         this.gameUno.startGame();
         //este.juegoUno.iniciarJuego()
         // Llama al método `startGame` del objeto `gameUno` para iniciar la lógica principal del juego.
+
+        //showInitialCardOnTable();
 
         printCardsHumanPlayer();
         //imprimirCartasJugadorHumano()
@@ -273,10 +294,11 @@ public class GameUnoController {
         //imprimirCartasJugadorMáquina()
         // Muestra en la interfaz gráfica las cartas del jugador máquina.
 
-        threadPlayMachine = new ThreadPlayMachine(this.eventManager, this.gameUno, this.machinePlayer, this.tableImageView);
+        threadPlayMachine = new ThreadPlayMachine(this.eventManager, this.gameUno, this.machinePlayer, this.tableImageView, this);
         //hiloJugarMáquina = nuevo ThreadPlayMachine(este.eventManager, este.juegoUno, este.jugadorMáquina, este.imagenMesa)
         // Crea una instancia de `ThreadPlayMachine` para manejar las jugadas automáticas de la máquina.
 
+        
         threadPlayMachine.start();
         //hiloJugarMáquina.iniciar()
         // Inicia el hilo `ThreadPlayMachine` para realizar las jugadas de la máquina.
@@ -316,8 +338,25 @@ public class GameUnoController {
         threadPlayMachineObserver.setThreadPlayMachine(threadPlayMachine);
         //observadorJugarMáquina.establecerHiloJugarMáquina(hiloJugarMáquina)
         // Asigna el hilo `ThreadPlayMachine` al observador `threadPlayMachineObserver`.
+
+
+
     }
 
+    // Método para colocar la carta inicial en la mesa
+    private void showInitialCardOnTable() {
+        // Coloca la carta inicial en la mesa
+        gameUno.initializeStartCard(); // Toma una carta inicial de la baraja
+
+        // Obtiene la carta actual de la mesa
+        Card initialCard = table.getCurrentCardOnTheTable();
+
+        // Actualiza el ImageView de la mesa con la imagen de la carta inicial
+        tableImageView.setImage(initialCard.getImage());
+
+        // Mensaje de confirmación
+        System.out.println("Carta inicial colocada en la mesa: " + initialCard.getColor() + " " + initialCard.getValue());
+    }
 
 
     //Inicializa las variables del juego.
@@ -374,6 +413,16 @@ public class GameUnoController {
         // Inicializa el estado del jugador para indicar que aún no ha jugado.
     }
 
+    public void  visualShift(boolean shift) {
+        if (shift) {
+            panePlayer.setStyle("-fx-border-color: transparent; -fx-border-width: 0px;");
+            paneMachine.setStyle("-fx-border-color: red; -fx-border-width: 4px;");
+        }else{
+            panePlayer.setStyle("-fx-border-color: red; -fx-border-width: 4px;");
+            paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 0px;");
+        }
+    }
+    
     //Imprime las cartas del jugador humano en el panel de la cuadrícula.
     public void printCardsHumanPlayer() {
         //pública vacío imprimirCartasJugadorHumano()
@@ -423,6 +472,8 @@ public class GameUnoController {
                         humanPlayer.removeCard(findPosCardsHumanPlayer(card));
                         //jugadorHumano.eliminarCarta(encontrarPosiciónCartaJugadorHumano(carta))
                         // Elimina la carta jugada de la mano del jugador humano.
+                        
+
 
                         printCardsHumanPlayer();
                         //imprimirCartasJugadorHumano()
@@ -442,12 +493,13 @@ public class GameUnoController {
                     // Imprime un mensaje indicando que el jugador no puede jugar fuera de turno.
                 }
             });
-
+            System.out.println(i);
             this.gridPaneCardsPlayer.add(cardImageView, i, 0);
             //este.cuadrículaCartasJugador.agregar(imagenCarta, i, 0)
             // Agrega la imagen de la carta al `GridPane` en la posición `i` (columna) y la fila `0`.
         }
-
+         numberPlayerLetters.setText("Cartas Jugador "+ humanPlayer.getCardsPlayer().size());
+        styleNumberMachineLetters(numberPlayerLetters);
         System.out.println("Number of cards human player: " + humanPlayer.getCardsPlayer().size());
         //System.out.println("Número de cartas del jugador humano: " + jugadorHumano.obtenerCartasJugador().tamaño())
         // Imprime en la consola la cantidad actual de cartas que tiene el jugador humano.
@@ -490,7 +542,8 @@ public class GameUnoController {
             //este.cuadrículaCartasMáquina.agregar(imagenCarta, i, 0)
             // Agrega la imagen de la carta al `GridPane` en la posición `i` (columna) y fila `0`.
         }
-
+        numberMachineLetters.setText("Cartas Oponente "+ machinePlayer.getCardsPlayer().size());
+        styleNumberMachineLetters(numberMachineLetters);
         System.out.println("Number of cards machine player: " + machinePlayer.getCardsPlayer().size());
         //System.out.println("Número de cartas del jugador máquina: " + jugadorMáquina.obtenerCartasJugador().tamaño())
         // Imprime en la consola la cantidad actual de cartas que tiene el jugador máquina.
@@ -520,6 +573,20 @@ public class GameUnoController {
         // Retorna -1 si la carta no se encuentra.
     }
 
+
+    public void styleNumberMachineLetters(Label numberLetters) {
+        // Cambiar el color del texto a rojo
+        numberLetters.setTextFill(Color.RED);
+
+        // Cambiar la fuente a una fuente gamer (asegúrate de que exista en el sistema)
+        numberLetters.setFont(Font.font("Press Start 2P", FontWeight.BOLD, 18));
+
+        // Opcional: Añadir un borde o sombra si es necesario
+        numberLetters.setStyle("-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);");
+    }
+
+    
+
     //Maneja la acción del botón "Atrás" para mostrar el conjunto anterior de cartas.
 //@param event el evento de acción
     @FXML
@@ -548,7 +615,7 @@ public class GameUnoController {
         //@FXML vacío manejarSiguiente(ActionEvent evento)
         // Método manejador para el botón "Siguiente" que muestra cartas posteriores.
 
-        if (this.posInitCardToShow < this.humanPlayer.getCardsPlayer().size() - 4) {
+        if (this.posInitCardToShow < this.humanPlayer.getCardsPlayer().size() - 5) {
             //si (este.posiciónInicialCartaMostrar < este.jugadorHumano.obtenerCartasJugador().tamaño() - 4)
             // Verifica si hay un conjunto siguiente de cartas para mostrar.
 
