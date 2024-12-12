@@ -66,6 +66,8 @@ public class GameUno implements IGameUno {
 //privada String colorCartaActualMesa;
 // Almacena el color actual de la carta que está en la parte superior de la mesa.
 
+    private GameUnoController controller;
+
     //Construye una nueva instancia de GameUno con los parámetros especificados.
 //@param eventManager el gestor de eventos para manejar los eventos del juego
 //@param humanPlayer el jugador humano en el juego
@@ -455,7 +457,7 @@ public class GameUno implements IGameUno {
         if (playerWhoSang.equals("HUMAN_PLAYER")) {
             //si (jugadorQueCantó.equals("HUMAN_PLAYER"))
             // Comprueba si el jugador que cantó "UNO" es el jugador humano.
-
+             System.out.println("Se cubrio");
             if (machinePlayer.getCardsPlayer().size() == 1 && !machinePlayerProtectedByUno) {
                 //si (jugadorMáquina.obtenerCartasJugador().tamaño() == 1 && !máquinaProtegidaPorUno)
                 // Si el jugador máquina tiene exactamente una carta y no está protegido.
@@ -477,6 +479,7 @@ public class GameUno implements IGameUno {
                 // Marca al jugador humano como protegido por "UNO".
 
             } else {
+                controller.setNotificationText("No puedes cantar UNO");
                 System.out.println("Can't sing UNO.");
                 //System.out.println("No puedes cantar UNO.")
                 // Mensaje de error si el jugador no cumple las condiciones para cantar "UNO".
@@ -486,9 +489,11 @@ public class GameUno implements IGameUno {
             // Si el jugador que cantó "UNO" es la máquina.
 
             if (!humanPlayerProtectedByUno) {
+                System.out.println("No se cubrio");
+
                 //si (!humanoProtegidoPorUno)
                 // Verifica si el jugador humano no está protegido por "UNO".
-
+                // System.out.println("SIII");
                 humanPlayer.addCard(this.deck.takeCard());
                 //jugadorHumano.agregarCarta(este.mazo.tomarCarta())
                 // Se penaliza al jugador humano agregándole una carta del mazo.

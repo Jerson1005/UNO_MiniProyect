@@ -71,51 +71,44 @@ public class ThreadPlayMachine extends Thread {
         this.hasPlayerPlayed = false;
     }
 
+
     @Override
     public void run() {
-        // @Override public void run()
         // Método principal del hilo que ejecuta la lógica de juego del jugador de máquina.
-        while (true) {
-            // while(true)
-            // Bucle infinito que verifica continuamente el estado del turno del jugador.
+        while (!Thread.currentThread().isInterrupted()) {
+            // Bucle que verifica continuamente el estado del turno del jugador, con posibilidad de interrupción.
             if (hasPlayerPlayed) {
-                // if (hasPlayerPlayed)
                 // Comprueba si el jugador humano ya ha jugado su turno.
+               controller.setNotificationText("Turno de la máquina...");
+                controller.setborderPane("-fx-border-color: transparent; -fx-border-width: 1px;","-fx-border-color: red; -fx-border-width: 5px;");
+                //controller.visualShift(true);
                 try {
-                    controller.visualShift(true);
                     Thread.sleep(2000);
-                    // Thread.sleep(2000)
                     // Pausa el hilo durante 2 segundos antes de ejecutar la acción de la máquina.
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt(); // Restablece el estado de interrupción
                     e.printStackTrace();
-                    // e.printStackTrace()
-                    // Maneja cualquier excepción de interrupción que ocurra.
+                    return; // Sale del método si el hilo es interrumpido
                 }
                 Random random = new Random();
-                // Random random = new Random()
                 // Crea un generador de números aleatorios.
                 double probability = 0.2;
-                // double probability = 0.2
                 // Define una probabilidad del 20% para tomar una carta.
                 boolean takeCard = random.nextDouble() < probability;
-                // boolean takeCard = random.nextDouble() < probability
                 // Decide aleatoriamente si el jugador de máquina debe tomar una carta.
 
                 if (takeCard) {
                     machineTakeCard();
-                    // machineTakeCard()
                     // Llama al método para que la máquina tome una carta.
                 } else {
                     putCardOnTheTable();
-                    // putCardOnTheTable()
                     // Llama al método para que la máquina coloque una carta en la mesa.
                 }
 
-
                 eventManager.notifyListenersCardsMachinePlayerUpdate();
-
-                controller.visualShift(false);
-                // eventManager.notifyListenersCardsMachinePlayerUpdate()
+                controller.setNotificationText("Tu turno...");
+                controller.setborderPane("-fx-border-color: red; -fx-border-width: 5px;","-fx-border-color: transparent; -fx-border-width: 1px;");
+               // controller.visualShift(false);
                 // Notifica a los observadores que las cartas del jugador de máquina han sido actualizadas.
             }
         }

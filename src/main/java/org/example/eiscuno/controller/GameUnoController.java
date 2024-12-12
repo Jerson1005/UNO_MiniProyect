@@ -2,6 +2,7 @@ package org.example.eiscuno.controller;
 //paquete org.example.eiscuno.controlador
 // Define el paquete donde se encuentra la clase actual, relacionada con los controladores.
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 //importar javafx.evento.ActionEvent
 // Importa la clase `ActionEvent`, que representa eventos de acción en JavaFX.
@@ -180,6 +181,8 @@ public class GameUnoController {
     @FXML
     private Label numberPlayerLetters;
 
+    @FXML
+    private Button buttonUno;
 
     private EventManager eventManager;
     //privada EventManager eventManager;
@@ -240,7 +243,7 @@ public class GameUnoController {
     private ThreadEndGame threadEndGame;
     //privada ThreadEndGame threadEndGame;
     // Hilo que maneja la lógica para finalizar el juego.
-
+    private String stateUno="";
     //Inicializa el controlador.
     @FXML
     void onHandleBlue(ActionEvent event) {
@@ -272,8 +275,11 @@ public class GameUnoController {
         // Configura los elementos visuales iniciales de la interfaz.
 
         // Aquí se invoca el turno del jugador
-        visualShift(false); // Turno del jugador
-
+        panePlayer.setStyle("-fx-border-color: red; -fx-border-width: 5px;");
+        paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
+        setNotificationText("Tu turno...");
+        buttonUno.setVisible(false);
+        
         initVariables();
         //inicializarVariables()
         // Inicializa las variables necesarias para el funcionamiento del juego.
@@ -303,7 +309,7 @@ public class GameUnoController {
         //hiloJugarMáquina.iniciar()
         // Inicia el hilo `ThreadPlayMachine` para realizar las jugadas de la máquina.
 
-        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.machinePlayer, gameUno);
+        threadSingUNOMachine = new ThreadSingUNOMachine(this.humanPlayer.getCardsPlayer(), this.machinePlayer, gameUno,this);
         //hiloCantarUNO = nuevo ThreadSingUNOMachine(este.jugadorHumano.obtenerCartasJugador(), este.jugadorMáquina, juegoUno)
         // Crea una instancia de `ThreadSingUNOMachine` para manejar el aviso automático de "UNO".
 
@@ -343,6 +349,7 @@ public class GameUnoController {
 
     }
 
+
     // Método para colocar la carta inicial en la mesa
     private void showInitialCardOnTable() {
         // Coloca la carta inicial en la mesa
@@ -355,7 +362,21 @@ public class GameUnoController {
         tableImageView.setImage(initialCard.getImage());
 
         // Mensaje de confirmación
-        System.out.println("Carta inicial colocada en la mesa: " + initialCard.getColor() + " " + initialCard.getValue());
+      
+        System.out.println("Carta inicial colocada en la mesa " + initialCard.getColor() + " " + initialCard.getValue());
+    }
+
+    public void setNotificationText(String message) {
+        Platform.runLater(() -> {
+            // Asegura que la modificación se realiza en el hilo principal de JavaFX
+            LabelNotificacions.setText(message);
+        });
+    }
+    public void setButtonUno(boolean button) {
+        Platform.runLater(() -> {
+            this.buttonUno.setVisible(button);// Asegura que la modificación se realiza en el hilo principal de JavaFX
+
+        });
     }
 
 
@@ -413,13 +434,27 @@ public class GameUnoController {
         // Inicializa el estado del jugador para indicar que aún no ha jugado.
     }
 
-    public void  visualShift(boolean shift) {
-        if (shift) {
-            panePlayer.setStyle("-fx-border-color: transparent; -fx-border-width: 0px;");
-            paneMachine.setStyle("-fx-border-color: red; -fx-border-width: 4px;");
-        }else{
-            panePlayer.setStyle("-fx-border-color: red; -fx-border-width: 4px;");
-            paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 0px;");
+    public void setborderPane(String messagePlayer, String messageMachine) {
+        Platform.runLater(() -> {
+            // Asegura que la modificación se realiza en el hilo principal de JavaFX
+            panePlayer.setStyle(messagePlayer);
+            paneMachine.setStyle(messageMachine);
+        });
+    }
+
+    private volatile boolean shift;
+    public void visualShift(  boolean shift) {
+        this.shift = shift;
+        if (panePlayer != null && paneMachine != null) {
+            if (shift) {
+                panePlayer.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
+                paneMachine.setStyle("-fx-border-color: red; -fx-border-width: 5px;");
+            } else {
+                panePlayer.setStyle("-fx-border-color: red; -fx-border-width: 5px;");
+                paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
+            }
+        } else {
+            System.out.println("Uno de los paneles es nulo.");
         }
     }
     
@@ -482,25 +517,26 @@ public class GameUnoController {
                     } catch (UnoException e) {
                         //capturar (UnoException e)
                         // Captura cualquier excepción que ocurra al intentar jugar la carta.
-
+                        LabelNotificacions.setText("No puedo colocar esa carta");
                         System.out.println(e.getMessage());
                         //System.out.println(e.getMessage())
                         // Imprime el mensaje de error en la consola.
                     }
                 } else {
+                    LabelNotificacions.setText("No es tu turno");
                     System.out.println("It's not your turn.");
                     //System.out.println("No es tu turno.")
                     // Imprime un mensaje indicando que el jugador no puede jugar fuera de turno.
                 }
             });
-            System.out.println(i);
+
             this.gridPaneCardsPlayer.add(cardImageView, i, 0);
             //este.cuadrículaCartasJugador.agregar(imagenCarta, i, 0)
             // Agrega la imagen de la carta al `GridPane` en la posición `i` (columna) y la fila `0`.
         }
          numberPlayerLetters.setText("Cartas Jugador "+ humanPlayer.getCardsPlayer().size());
         styleNumberMachineLetters(numberPlayerLetters);
-        System.out.println("Number of cards human player: " + humanPlayer.getCardsPlayer().size());
+      //  System.out.println("Number of cards human player: " + humanPlayer.getCardsPlayer().size());
         //System.out.println("Número de cartas del jugador humano: " + jugadorHumano.obtenerCartasJugador().tamaño())
         // Imprime en la consola la cantidad actual de cartas que tiene el jugador humano.
     }
@@ -544,7 +580,7 @@ public class GameUnoController {
         }
         numberMachineLetters.setText("Cartas Oponente "+ machinePlayer.getCardsPlayer().size());
         styleNumberMachineLetters(numberMachineLetters);
-        System.out.println("Number of cards machine player: " + machinePlayer.getCardsPlayer().size());
+      //  System.out.println("Number of cards machine player: " + machinePlayer.getCardsPlayer().size());
         //System.out.println("Número de cartas del jugador máquina: " + jugadorMáquina.obtenerCartasJugador().tamaño())
         // Imprime en la consola la cantidad actual de cartas que tiene el jugador máquina.
     }
@@ -634,7 +670,7 @@ public class GameUnoController {
     @FXML
     void onHandleTakeCard(ActionEvent event) {
         //@FXML vacío manejarTomarCarta(ActionEvent evento)
-        System.out.println("SI.");
+
         
         // Método manejador para que el jugador humano tome una carta.
 
@@ -650,7 +686,7 @@ public class GameUnoController {
                 printCardsHumanPlayer();
                 //imprimirCartasJugadorHumano()
                 // Actualiza la visualización de las cartas del jugador humano.
-
+                LabelNotificacions.setText("Tamaste una Carta de la baraja");
                 System.out.println("Human player took a card.");
                 //System.out.println("El jugador humano tomó una carta.")
                 // Mensaje informativo en la consola.
@@ -665,7 +701,7 @@ public class GameUnoController {
             } catch (IllegalStateException e) {
                 //capturar (IllegalStateException e)
                 // Captura una excepción si ocurre un error.
-
+                LabelNotificacions.setText("No puedo colocar esa Carta");
                 System.out.println(e.getMessage());
                 //System.out.println(e.getMessage())
                 // Muestra el mensaje de error en la consola.
@@ -675,6 +711,7 @@ public class GameUnoController {
                 // Restablece el estado si ocurre un error.
             }
         } else {
+            LabelNotificacions.setText("No es tu turno");
             System.out.println("It's not your turn.");
             //System.out.println("No es tu turno.")
             // Mensaje informativo si el jugador intenta tomar una carta fuera de su turno.
@@ -687,10 +724,18 @@ public class GameUnoController {
     void onHandleUno(ActionEvent event) {
         //@FXML vacío manejarUNO(ActionEvent evento)
         // Método manejador para que el jugador diga "UNO".
+        stateUno= "HUMAN_PLAYER";
 
-        gameUno.haveSungOne("HUMAN_PLAYER");
         //juegoUno.hanCantadoUNO("HUMAN_PLAYER")
         // Llama al método para registrar que el jugador humano dijo "UNO".
+    }
+
+    public void SetStateUno(String state) {
+           this.stateUno = state;
+    }
+
+    public String getStateUno(){
+               return stateUno;
     }
 
     //Maneja la acción de presionar el botón de salida.
@@ -711,11 +756,12 @@ public class GameUnoController {
         //pública vacío ganar() lanza IOException
         // Método para manejar la condición de victoria del jugador.
 
-        this.stage = (Stage) this.backButton.getScene().getWindow();
+        this.stage = (Stage) this.buttonUno.getScene().getWindow();
         //este.ventana = (Stage) este.botonAtras.obtenerEscena().obtenerVentana()
         // Obtiene la ventana actual desde el botón.
 
         this.stage.close();
+       // GameUnoStage.deleteInstance();
         //este.ventana.cerrar()
         // Cierra la ventana actual.
 
@@ -729,15 +775,14 @@ public class GameUnoController {
     public void lose() throws IOException {
         //pública vacío perder() lanza IOException
         // Método para manejar la condición de derrota del jugador.
-
-        this.stage = (Stage) this.backButton.getScene().getWindow();
+        this.stage = (Stage) this.buttonUno.getScene().getWindow();
         //este.ventana = (Stage) este.botonAtras.obtenerEscena().obtenerVentana()
         // Obtiene la ventana actual desde el botón.
 
         this.stage.close();
         //este.ventana.cerrar()
         // Cierra la ventana actual.
-
+       // GameUnoStage.deleteInstance();
         LoseStage.getInstance();
         //LoseStage.obtenerInstancia()
         // Abre la ventana de derrota.
@@ -754,5 +799,8 @@ public class GameUnoController {
         // Asigna el valor recibido a la variable `playerHasPlayed`.
     }
 
+    public Button getButtonUno() {
+        return buttonUno;
+    }
 
 }

@@ -15,30 +15,33 @@
    <left>
       <Pane prefHeight="300.0" prefWidth="158.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="deckButtonImageView" fitHeight="152.0" fitWidth="100.0" layoutX="29.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="29.0" layoutY="38.0" mnemonicParsing="false" onAction="#onHandleTakeCard" prefHeight="149.0" prefWidth="100.0" style="-fx-background-color: TRANSPARENT; -fx-border-color: RED;" />
-            <Label fx:id="LabelNotificacions" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="239.0" prefHeight="30.0" prefWidth="563.0" textAlignment="JUSTIFY" wrapText="true" />
+            <Label fx:id="LabelNotificacions" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="160.0" prefHeight="30.0" prefWidth="680.0" text="Machine player took a card" textAlignment="JUSTIFY" textFill="#0009ff" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="27.0" />
+               </font></Label>
+            <ImageView fx:id="deckButtonImageView" fitHeight="152.0" fitWidth="100.0" layoutX="29.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="29.0" mnemonicParsing="false" onAction="#onHandleTakeCard" prefHeight="149.0" prefWidth="100.0" style="-fx-background-color: TRANSPARENT; -fx-border-color: RED;" />
          </children>
       </Pane>
    </left>
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="60.0" layoutY="7.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="45.0" prefWidth="81.0" text="UNO" />
-            <GridPane layoutX="15.0" layoutY="59.0" prefHeight="123.0" prefWidth="171.0">
+            <Button fx:id="buttonUno" layoutX="60.0" layoutY="2.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="45.0" prefWidth="81.0" text="UNO" />
+            <GridPane layoutX="33.0" layoutY="60.0" prefHeight="76.0" prefWidth="150.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.20001220703125" minWidth="10.0" prefWidth="70.19998779296876" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.99998779296875" minWidth="10.0" prefWidth="79.00001220703123" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="63.000006103515624" minHeight="10.0" prefHeight="59.200018310546874" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="68.60001220703126" minHeight="10.0" prefHeight="63.999981689453115" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="63.000006103515624" minHeight="10.0" prefHeight="36.000006103515624" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="80.80001831054688" minHeight="10.0" prefHeight="39.999993896484376" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#onHandleRed" prefHeight="93.0" prefWidth="145.0" text="ROJO" />
-                  <Button mnemonicParsing="false" onAction="#onHandleYellow" prefHeight="91.0" prefWidth="133.0" text="AMARILLO" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#onHandleBlue" prefHeight="91.0" prefWidth="133.0" text="AZUL" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#onHandleGreen" prefHeight="91.0" prefWidth="133.0" text="VERDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#onHandleRed" prefHeight="40.0" prefWidth="70.0" text="ROJO" />
+                  <Button mnemonicParsing="false" onAction="#onHandleYellow" prefHeight="37.0" prefWidth="73.0" text="AMARILLO" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#onHandleBlue" prefHeight="40.0" prefWidth="70.0" text="AZUL" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#onHandleGreen" prefHeight="40.0" prefWidth="75.0" text="VERDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
@@ -47,7 +50,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="tableImageView" fitHeight="149.0" fitWidth="100.0" layoutX="137.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tableImageView" fitHeight="149.0" fitWidth="100.0" layoutX="137.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </center>

@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 //importar javafx.escenario.Stage
 // Importa la clase `Stage`, que representa la ventana principal de la aplicación.
 
+import javafx.stage.StageStyle;
 import org.example.eiscuno.model.unoenum.EISCUnoEnum;
 //importar org.example.eiscuno.modelo.unoenum.EISCUnoEnum
 // Importa la enumeración `EISCUnoEnum`, utilizada para obtener rutas de imágenes.
@@ -88,7 +89,7 @@ public class GameUnoStage extends Stage {
         setResizable(false);
         //establecerRedimensionable(falso)
         // Desactiva la opción para redimensionar la ventana.
-
+        initStyle(StageStyle.UNDECORATED);
         show();
         //mostrar()
         // Muestra la ventana principal al usuario.
