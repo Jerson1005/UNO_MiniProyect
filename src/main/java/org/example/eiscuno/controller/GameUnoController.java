@@ -263,37 +263,19 @@ public class GameUnoController {
     @FXML
     private Button buttonYellow;
 
-    @FXML
-    void onHandleBlue(ActionEvent event) {
 
-    }
-
-    @FXML
-    void onHandleGreen(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onHandleRed(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onHandleYellow(ActionEvent event) {
-
-    }
 
     @FXML
     public void initialize() {
         //pública vacío inicializar()
         // Método que inicializa el controlador. Es llamado automáticamente después de cargar el archivo FXML.
 
-        //setVisuals();
+        setVisuals();
         //establecerVisuales()
         // Configura los elementos visuales iniciales de la interfaz.
 
         // Aquí se invoca el turno del jugador
-        panePlayer.setStyle("-fx-border-color: red; -fx-border-width: 5px;");
+        panePlayer.setStyle("-fx-border-color: #FFD700; -fx-border-width: 5px;");
         paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
         setNotificationText("Tu turno...");
         buttonUno.setVisible(false);
@@ -365,6 +347,27 @@ public class GameUnoController {
 
 
 
+    }
+    private void setVisuals() {
+        //privada vacío establecerVisuales()
+        // Método privado que configura los elementos visuales de la interfaz del juego Uno.
+
+        String imageUrl = String.valueOf(getClass().getResource(EISCUnoEnum.BACKGROUND_UNO.getFilePath()));
+        //Cadena urlImagen = Cadena.valorDe(obtenerClase().obtenerRecurso(EISCUnoEnum.BACKGROUND_UNO.obtenerRutaArchivo()))
+        // Obtiene la ruta del archivo de imagen del fondo del juego Uno y la convierte a una cadena.
+
+        String style = "-fx-background-image: url('" + imageUrl + "'); " + "-fx-background-size: cover;";
+        //Cadena estilo = "-fx-background-image: url('" + urlImagen + "'); " + "-fx-background-size: cover;"
+        // Crea un estilo CSS que configura una imagen de fondo con cobertura total.
+
+        deckButtonImageView.setImage(new Image(String.valueOf(getClass().getResource(EISCUnoEnum.DECK_OF_CARDS.getFilePath()))));
+        //botónImagenMazo.establecerImagen(nueva Imagen(Cadena.valorDe(obtenerClase().obtenerRecurso(EISCUnoEnum.DECK_OF_CARDS.obtenerRutaArchivo()))))
+        // Asigna la imagen del mazo de cartas al `ImageView` correspondiente.
+        
+
+        gameBorderPane.setStyle(style);
+        //panelBordeJuego.establecerEstilo(estilo)
+        // Aplica el estilo CSS al `BorderPane` para establecer el fondo del juego con la imagen configurada.
     }
 
 
@@ -466,9 +469,9 @@ public class GameUnoController {
         if (panePlayer != null && paneMachine != null) {
             if (shift) {
                 panePlayer.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
-                paneMachine.setStyle("-fx-border-color: red; -fx-border-width: 5px;");
+                paneMachine.setStyle("-fx-border-color: #FFD700; -fx-border-width: 5px;");
             } else {
-                panePlayer.setStyle("-fx-border-color: red; -fx-border-width: 5px;");
+                panePlayer.setStyle("-fx-border-color: #FFD700; -fx-border-width: 5px;");
                 paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
             }
         } else {
@@ -633,7 +636,7 @@ public class GameUnoController {
         numberLetters.setTextFill(Color.RED);
 
         // Cambiar la fuente a una fuente gamer (asegúrate de que exista en el sistema)
-        numberLetters.setFont(Font.font("Press Start 2P", FontWeight.BOLD, 18));
+        numberLetters.setFont(Font.font("Press Start 2P", FontWeight.BOLD, 25));
 
         // Opcional: Añadir un borde o sombra si es necesario
         numberLetters.setStyle("-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);");

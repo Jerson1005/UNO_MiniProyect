@@ -1,0 +1,22 @@
+Button {
+    -fx-background-color: #B22222; /* Rojo intenso */
+    -fx-text-fill: #FFD700; /* Texto blanco */
+    -fx-font-family: "Consolas"; /* Tipo de letra Consolas */
+    -fx-font-weight: bold; /* Texto en negrita */
+    -fx-font-size: 13px; /* Tamaño del texto */
+    -fx-cursor: "hand"; /* Cursor de mano al pasar */
+    -fx-border-color: #FFD700; /* Borde dorado */
+    -fx-border-radius: 20px; /* Bordes redondeados */
+    -fx-background-radius: 20px; /* Fondo redondeado */
+    -fx-border-width: 4px; /* Ancho del borde */
+}
+
+Button:hover {
+    -fx-background-color: #8B0000; /* Rojo oscuro al pasar el mouse */
+    -fx-text-fill: #FFD700; /* Texto blanco */
+    -fx-font-family: "Consolas"; /* Mantiene la misma fuente */
+    -fx-font-weight: bold; /* Texto en negrita */
+    -fx-font-size: 15px; /* Tamaño del texto aumentado */
+    -fx-border-color: #FFD700; /* Borde dorado */
+    -fx-border-width: 4px; /* Ancho del borde */
+}

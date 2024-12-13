@@ -80,7 +80,7 @@ public class ThreadPlayMachine extends Thread {
             if (hasPlayerPlayed) {
                 // Comprueba si el jugador humano ya ha jugado su turno.
                controller.setNotificationText("Turno de la máquina...");
-                controller.setborderPane("-fx-border-color: transparent; -fx-border-width: 1px;","-fx-border-color: red; -fx-border-width: 5px;");
+                controller.setborderPane("-fx-border-color: transparent; -fx-border-width: 1px;","-fx-border-color: #FFD700; -fx-border-width: 5px;");
                 //controller.visualShift(true);
                 try {
                     Thread.sleep(2000);
@@ -107,7 +107,7 @@ public class ThreadPlayMachine extends Thread {
 
                 eventManager.notifyListenersCardsMachinePlayerUpdate();
                 controller.setNotificationText("Tu turno...");
-                controller.setborderPane("-fx-border-color: red; -fx-border-width: 5px;","-fx-border-color: transparent; -fx-border-width: 1px;");
+                controller.setborderPane("-fx-border-color: #FFD700; -fx-border-width: 5px;","-fx-border-color: transparent; -fx-border-width: 1px;");
                // controller.visualShift(false);
                 // Notifica a los observadores que las cartas del jugador de máquina han sido actualizadas.
             }

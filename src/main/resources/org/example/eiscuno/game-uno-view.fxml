@@ -15,20 +15,23 @@
    <left>
       <Pane prefHeight="300.0" prefWidth="158.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="LabelNotificacions" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="160.0" prefHeight="30.0" prefWidth="680.0" text="Machine player took a card" textAlignment="JUSTIFY" textFill="#0009ff" wrapText="true">
+            <Label fx:id="LabelNotificacions" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="160.0" prefHeight="30.0" prefWidth="680.0" text="Machine player took a card" textAlignment="JUSTIFY" textFill="#ffc2c2" wrapText="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="27.0" />
                </font></Label>
-            <ImageView fx:id="deckButtonImageView" fitHeight="152.0" fitWidth="100.0" layoutX="29.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="buttonTakeCard" layoutX="29.0" mnemonicParsing="false" onAction="#onHandleTakeCard" prefHeight="149.0" prefWidth="100.0" style="-fx-background-color: TRANSPARENT; -fx-border-color: RED;" />
+            <ImageView fx:id="deckButtonImageView" fitHeight="152.0" fitWidth="100.0" layoutX="35.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="buttonTakeCard" layoutX="43.0" layoutY="45.0" mnemonicParsing="false" onAction="#onHandleTakeCard" prefHeight="109.0" prefWidth="92.0" stylesheets="@css/lettersButton.css" />
          </children>
       </Pane>
    </left>
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buttonUno" layoutX="60.0" layoutY="2.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="45.0" prefWidth="81.0" text="UNO" />
-            <GridPane fx:id="gridPaneColor" layoutX="33.0" layoutY="60.0" prefHeight="76.0" prefWidth="150.0">
+            <Button fx:id="buttonUno" layoutX="85.0" layoutY="-16.0" mnemonicParsing="false" onAction="#onHandleUno" prefHeight="81.0" prefWidth="101.0" stylesheets="@css/UNO.css" text="UNO">
+               <font>
+                  <Font size="1.0" />
+               </font></Button>
+            <GridPane fx:id="gridPaneColor" layoutX="33.0" layoutY="72.0" prefHeight="76.0" prefWidth="150.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.20001220703125" minWidth="10.0" prefWidth="70.19998779296876" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.99998779296875" minWidth="10.0" prefWidth="79.00001220703123" />
@@ -38,10 +41,10 @@
                 <RowConstraints maxHeight="80.80001831054688" minHeight="10.0" prefHeight="39.999993896484376" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="buttonRed" mnemonicParsing="false" onAction="#onHandleRed" prefHeight="54.0" prefWidth="108.0" text="ROJO" />
-                  <Button fx:id="buttonYellow" mnemonicParsing="false" onAction="#onHandleYellow" prefHeight="37.0" prefWidth="73.0" text="AMARILLO" GridPane.columnIndex="1" />
-                  <Button fx:id="buttonBlue" mnemonicParsing="false" onAction="#onHandleBlue" prefHeight="40.0" prefWidth="70.0" text="AZUL" GridPane.rowIndex="1" />
-                  <Button fx:id="buttonGreen" mnemonicParsing="false" onAction="#onHandleGreen" prefHeight="40.0" prefWidth="75.0" text="VERDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="buttonRed" mnemonicParsing="false" prefHeight="37.0" prefWidth="85.0" text="ROJO" />
+                  <Button fx:id="buttonYellow" mnemonicParsing="false" prefHeight="37.0" prefWidth="74.0" text="AMARILLO" GridPane.columnIndex="1" />
+                  <Button fx:id="buttonBlue" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="AZUL" GridPane.rowIndex="1" />
+                  <Button fx:id="buttonGreen" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" text="VERDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
@@ -57,7 +60,7 @@
    <top>
       <AnchorPane prefHeight="146.0" prefWidth="694.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="paneMachine" layoutX="109.0" layoutY="40.0" prefHeight="100.0" prefWidth="475.0" style="-fx-border-color: red;">
+            <Pane fx:id="paneMachine" layoutX="109.0" layoutY="40.0" prefHeight="103.0" prefWidth="475.0">
                <children>
                   <GridPane fx:id="gridPaneCardsMachine" layoutY="6.0" prefHeight="80.0" prefWidth="475.0">
                     <columnConstraints>
@@ -73,19 +76,24 @@
                   </GridPane>
                </children>
             </Pane>
-            <Button layoutX="636.0" layoutY="14.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="45.0" prefWidth="44.0" text="x">
+            <Button layoutX="634.0" layoutY="9.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="45.0" prefWidth="45.0" stylesheets="@css/index.css" text="x">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Label fx:id="numberMachineLetters" alignment="CENTER" layoutX="231.0" layoutY="-1.0" prefHeight="29.0" prefWidth="231.0" text="Maquina" />
+            <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" stylesheets="@css/index.css" text="?">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
-            <Label fx:id="numberMachineLetters" alignment="CENTER" layoutX="237.0" layoutY="1.0" prefHeight="31.0" prefWidth="217.0" text="Maquina" />
          </children>
       </AnchorPane>
    </top>
    <bottom>
       <AnchorPane prefHeight="151.0" prefWidth="694.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="panePlayer" layoutX="109.0" prefHeight="100.0" prefWidth="475.0" style="-fx-border-color: red;">
+            <Pane fx:id="panePlayer" layoutX="109.0" prefHeight="100.0" prefWidth="475.0">
                <children>
                   <GridPane fx:id="gridPaneCardsPlayer" prefHeight="100.0" prefWidth="475.0">
                     <columnConstraints>
@@ -101,9 +109,9 @@
                   </GridPane>
                </children>
             </Pane>
-            <Button layoutX="25.0" layoutY="37.0" mnemonicParsing="false" onAction="#onHandleBack" text="Anterior" />
-            <Button layoutX="607.0" layoutY="37.0" mnemonicParsing="false" onAction="#onHandleNext" text="Siguinte" />
-            <Label fx:id="numberPlayerLetters" alignment="CENTER" layoutX="225.0" layoutY="110.0" prefHeight="29.0" prefWidth="231.0" text="Jugador " />
+            <Button layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#onHandleBack" prefHeight="47.0" prefWidth="95.0" stylesheets="@css/index.css" text="Anterior" />
+            <Button layoutX="595.0" layoutY="29.0" mnemonicParsing="false" onAction="#onHandleNext" prefHeight="47.0" prefWidth="99.0" stylesheets="@css/index.css" text="Siguinte" />
+            <Label fx:id="numberPlayerLetters" alignment="CENTER" layoutX="231.0" layoutY="107.0" prefHeight="29.0" prefWidth="231.0" text="Jugador " />
          </children>
       </AnchorPane>
    </bottom>

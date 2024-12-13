@@ -1,0 +1,22 @@
+Button {
+    -fx-background-color: #FF0000; /* Rojo brillante UNO */
+    -fx-text-fill: #FFFFFF; /* Texto blanco */
+    -fx-font-family: "Arial Black"; /* Fuente gruesa */
+    -fx-font-weight: bold; /* Negrita */
+    -fx-font-size: 20px; /* Tamaño de letra grande */
+    -fx-cursor: "hand"; /* Cursor de mano al pasar el mouse */
+    -fx-border-color: #FFD700; /* Borde dorado */
+    -fx-border-radius: 40px; /* Bordes muy redondeados */
+    -fx-background-radius: 40px; /* Redondeo del fondo */
+    -fx-border-width: 5px; /* Ancho del borde dorado */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 2); /* Sombra para profundidad */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+}
+
+Button:pressed {
+    -fx-background-color: #FF4500; /* Rojo más oscuro cuando se presiona */
+    -fx-border-color: #FFA500; /* Borde naranja dorado */
+    -fx-font-size: 18px; /* Tamaño de letra ligeramente reducido */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0, 0, 3); /* Sombra más pequeña */
+    -fx-translate-y: 2px; /* Efecto de hundimiento */
+}
