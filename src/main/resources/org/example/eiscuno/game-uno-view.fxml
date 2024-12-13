@@ -82,7 +82,7 @@
                </font>
             </Button>
             <Label fx:id="numberMachineLetters" alignment="CENTER" layoutX="231.0" layoutY="-1.0" prefHeight="29.0" prefWidth="231.0" text="Maquina" />
-            <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" stylesheets="@css/index.css" text="?">
+            <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#onInstructions" prefHeight="45.0" prefWidth="45.0" stylesheets="@css/index.css" text="?">
                <font>
                   <Font size="19.0" />
                </font>

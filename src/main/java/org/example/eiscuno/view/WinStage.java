@@ -32,7 +32,7 @@ public class WinStage extends Stage {
         Scene scene = new Scene(root);
 
         // Configuring the stage
-        setTitle("Ganaste"); // Sets the title of the stage
+        setTitle("GANASTE"); // Sets the title of the stage
         getIcons().add(
                 new Image(
                         String.valueOf(getClass().getResource(EISCUnoEnum.FAVICON.getFilePath()))));

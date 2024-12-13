@@ -105,6 +105,7 @@ import org.example.eiscuno.model.observer.GameUnoControllerObserver;
 import org.example.eiscuno.view.GameUnoStage;
 import org.example.eiscuno.view.LoseStage;
 import org.example.eiscuno.view.WinStage;
+import org.example.eiscuno.view.InstructionsStage;
 //importar org.example.eiscuno.vista.GameUnoStage
 // Importa la clase `GameUnoStage`, que representa la ventana principal del juego.
 
@@ -116,10 +117,7 @@ public class GameUnoController {
     //pública clase GameUnoController
     // Declara la clase `GameUnoController` que actúa como controlador principal para la lógica y la interfaz del juego Uno.
 
-    @FXML
-    BorderPane gameBorderPane;
-    // @FXML BorderPane gameBorderPane;
-    // Pane de diseño principal que organiza la estructura de la interfaz del juego Uno.
+
 
     @FXML
     private Button backButton;
@@ -183,8 +181,11 @@ public class GameUnoController {
 
     @FXML
     private Button buttonUno;
+
     @FXML
     private Button buttonTakeCard;
+
+    private String currentTableCardColor; // Guarda el color seleccionado
 
     private EventManager eventManager;
     //privada EventManager eventManager;
@@ -263,7 +264,21 @@ public class GameUnoController {
     @FXML
     private Button buttonYellow;
 
+    @FXML
+    BorderPane gameBorderPane;
+    // @FXML BorderPane gameBorderPane;
+    // Pane de diseño principal que organiza la estructura de la interfaz del juego Uno.
 
+    @FXML
+    void onInstructions(ActionEvent event) throws IOException {
+       // InstructionsStage.getInstance();
+        try {
+            // Llama a getInstance() para abrir la ventana si no está abierta
+            InstructionsStage.getInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void initialize() {
@@ -279,7 +294,7 @@ public class GameUnoController {
         paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
         setNotificationText("Tu turno...");
         buttonUno.setVisible(false);
-       gridPaneColor.setVisible(false);
+        gridPaneColor.setVisible(false);
         initVariables();
         //inicializarVariables()
         // Inicializa las variables necesarias para el funcionamiento del juego.
@@ -290,7 +305,6 @@ public class GameUnoController {
         //este.juegoUno.iniciarJuego()
         // Llama al método `startGame` del objeto `gameUno` para iniciar la lógica principal del juego.
 
-        //showInitialCardOnTable();
 
         printCardsHumanPlayer();
         //imprimirCartasJugadorHumano()
@@ -348,7 +362,7 @@ public class GameUnoController {
 
 
     }
-    private void setVisuals() {
+    public void setVisuals() {
         //privada vacío establecerVisuales()
         // Método privado que configura los elementos visuales de la interfaz del juego Uno.
 
@@ -372,7 +386,7 @@ public class GameUnoController {
 
 
     // Método para colocar la carta inicial en la mesa
-    private void showInitialCardOnTable() {
+    public void showInitialCardOnTable() {
         // Coloca la carta inicial en la mesa
         gameUno.initializeStartCard(); // Toma una carta inicial de la baraja
 
@@ -402,7 +416,7 @@ public class GameUnoController {
 
 
     //Inicializa las variables del juego.
-    private void initVariables() {
+    public void initVariables() {
         //privada vacío inicializarVariables()
         // Método privado que inicializa las variables necesarias para el funcionamiento del juego.
 
@@ -463,21 +477,6 @@ public class GameUnoController {
         });
     }
 
-    private volatile boolean shift;
-    public void visualShift(  boolean shift) {
-        this.shift = shift;
-        if (panePlayer != null && paneMachine != null) {
-            if (shift) {
-                panePlayer.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
-                paneMachine.setStyle("-fx-border-color: #FFD700; -fx-border-width: 5px;");
-            } else {
-                panePlayer.setStyle("-fx-border-color: #FFD700; -fx-border-width: 5px;");
-                paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
-            }
-        } else {
-            System.out.println("Uno de los paneles es nulo.");
-        }
-    }
 
     //Imprime las cartas del jugador humano en el panel de la cuadrícula.
     public void printCardsHumanPlayer() {
@@ -608,7 +607,7 @@ public class GameUnoController {
     //Encuentra la posición de una carta específica en la mano del jugador humano.
 //@param card la carta a encontrar
 //@return la posición de la carta, o -1 si no se encuentra
-    private Integer findPosCardsHumanPlayer(Card card) {
+    public Integer findPosCardsHumanPlayer(Card card) {
         //privada Entero encontrarPosiciónCartaJugadorHumano(Carta carta)
         // Método privado que busca la posición de una carta específica en la mano del jugador humano.
 
@@ -824,7 +823,7 @@ public class GameUnoController {
         return buttonUno;
     }
 
-    private String currentTableCardColor; // Guarda el color seleccionado
+
 
     // Método para mostrar la selección de color
     public void showColorSelectionPanel() {
@@ -899,7 +898,7 @@ public class GameUnoController {
    }
 
     // Método auxiliar para restablecer la visibilidad de los botones
-    private void resetButtonVisibility(boolean worth) {
+    public void resetButtonVisibility(boolean worth) {
         buttonBlue.setVisible(worth);
         buttonGreen.setVisible(worth);
         buttonRed.setVisible(worth);
@@ -944,6 +943,8 @@ public class GameUnoController {
         }).start();
 
     }
+
+    
 
 
 }

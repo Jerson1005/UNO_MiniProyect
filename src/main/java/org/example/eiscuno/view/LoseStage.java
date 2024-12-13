@@ -68,7 +68,7 @@ public class LoseStage extends Stage {
         // Crea una nueva escena con el nodo raíz cargado.
 
         // Configuración de la ventana
-        setTitle("Perdiste");
+        setTitle("PERDISTE");
         //establecerTítulo("Perdiste")
         // Configura el título de la ventana.
 

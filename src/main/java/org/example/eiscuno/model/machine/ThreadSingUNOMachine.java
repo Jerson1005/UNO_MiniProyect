@@ -90,7 +90,7 @@ public class ThreadSingUNOMachine implements Runnable {
 //     * Si el jugador humano tiene una carta, simula que la máquina canta "UNO"
 //     * y notifica la instancia del juego.
 
-    private void hasOneCardTheHumanPlayer()  {
+    public void hasOneCardTheHumanPlayer()  {
         System.out.println("Cantidad cartas: "+ cardsPlayer.size());
             if (cardsPlayer.size() == 1 ) {
 
@@ -128,7 +128,7 @@ public class ThreadSingUNOMachine implements Runnable {
     // Si el jugador máquina tiene una carta, simula que la máquina canta "UNO"
     //para protegerse y notifica la instancia del juego.
 
-    private void hasOneCardTheMachinePlayer() {
+    public void hasOneCardTheMachinePlayer() {
         if (cardsMachine.size() == 1) {
             // Si el jugador máquina tiene solo una carta...
 

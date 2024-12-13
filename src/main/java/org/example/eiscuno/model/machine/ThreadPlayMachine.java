@@ -114,7 +114,7 @@ public class ThreadPlayMachine extends Thread {
         }
     }
 
-    private void putCardOnTheTable() {
+    public void putCardOnTheTable() {
         // private void putCardOnTheTable()
         // Método privado que simula al jugador de máquina colocando una carta en la mesa.
         ArrayList<Card> cardsMachinePlayer = machinePlayer.getCardsPlayer();

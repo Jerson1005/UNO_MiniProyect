@@ -6,6 +6,7 @@ import org.example.eiscuno.model.card.Card;
 // importa org.example.eiscuno.modelo.carta.Carta;
 // Importa la clase `Card` para representar cartas dentro de las funcionalidades del juego.
 
+import org.example.eiscuno.model.deck.Deck;
 import org.example.eiscuno.model.exception.UnoException;
 // importa org.example.eiscuno.modelo.excepción.UnoExcepción;
 // Importa la clase `UnoException` para manejar excepciones específicas del juego Uno.
@@ -17,7 +18,25 @@ public interface IGameUno {
 // interfaz pública IGameUno;
 // Define una interfaz para estructurar las funciones principales del juego Uno.
 
+    void SetCurrentTableCardColor(String Color);
 
+    Deck getDeck();
+
+    void refillDeckOfCards();
+
+    void takeCardPlayer(String playerWhoTakes);
+
+    String getRandomColor();
+
+
+
+    boolean cardCanBePlayed(Card card, Card currentCard);
+
+    void eatCard(String playerWhoEats, int numberOfCards);
+
+    boolean isNumericCard(Card card);
+
+    void initializeStartCard();
     // Inicia el juego de Uno.
     void startGame();
     // void iniciarJuego();

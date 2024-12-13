@@ -75,6 +75,7 @@ public class GameUno implements IGameUno {
 //@param machinePlayer el jugador controlado por la IA en el juego
 //@param deck el mazo de cartas de Uno
 //@param table la mesa donde se colocan las cartas durante el juego
+
     public GameUno(EventManager eventManager, Player humanPlayer, Player machinePlayer, Deck deck, Table table,GameUnoController controller) {
         //pública GameUno(EventManager manejadorEventos, Player jugadorHumano, Player jugadorMáquina, Deck mazo, Table mesa)
         // Constructor de la clase `GameUno` que inicializa los componentes del juego.
@@ -105,7 +106,7 @@ public class GameUno implements IGameUno {
         this.controller = controller; // Asigna el controlador pasado
         //currentTableCardColor = null; // Inicializa el color actual de la mesa como nulo
     }
-
+    @Override
     public void initializeStartCard() {
         // pública vacío inicializarCartaInicial()
         // Método público que inicializa la carta inicial del juego asegurando que sea numérica (del 0 al 9).
@@ -148,7 +149,8 @@ public class GameUno implements IGameUno {
     }
 
     // Método para verificar si una carta es numérica (0-9)
-    private boolean isNumericCard(Card card) {
+    @Override
+    public boolean isNumericCard(Card card) {
         // privada booleano esCartaNumerica(Carta carta)
         // Método privado que verifica si la carta dada tiene un valor numérico entre 0 y 9.
 
@@ -197,6 +199,7 @@ public class GameUno implements IGameUno {
     //Distribuye cartas del mazo a un jugador.
 //@param playerWhoEats el jugador que recibe las cartas ("MACHINE_PLAYER" o "HUMAN_PLAYER")
 //@param numberOfCards el número de cartas a distribuir
+    @Override
     public void eatCard(String playerWhoEats, int numberOfCards) {
         //pública vacío comerCarta(String jugadorQueCome, int númeroDeCartas)
         // Método que distribuye un número específico de cartas al jugador especificado.
@@ -297,7 +300,8 @@ public class GameUno implements IGameUno {
 //@param card la carta que se quiere jugar
 //@param currentCard la carta actual en la mesa
 //@return verdadero si la carta puede ser jugada, falso en caso contrario
-    private boolean cardCanBePlayed(Card card, Card currentCard) {
+    @Override
+    public boolean cardCanBePlayed(Card card, Card currentCard) {
         //privada booleano cartaPuedeSerJugada(Carta carta, Carta cartaActual)
         // Método que verifica si la carta seleccionada por el jugador puede ser jugada según las reglas del juego Uno.
 
@@ -324,7 +328,8 @@ public class GameUno implements IGameUno {
 //@param card la carta que se está jugando
 //@param playerWhoPlays el jugador que está jugando la carta ("HUMAN_PLAYER" o "MACHINE_PLAYER")
 //@throws UnoException si ocurre un error durante la jugada de la carta
-    private void applySpecialCardEffect(Card card, String playerWhoPlays) throws UnoException {
+    
+    public void applySpecialCardEffect(Card card, String playerWhoPlays) throws UnoException {
         //privada vacío aplicarEfectoCartaEspecial(Carta carta, String jugadorQueJuega) lanza UnoException
         // Método que aplica los efectos de las cartas especiales y actualiza el estado del juego.
 
@@ -469,7 +474,8 @@ public class GameUno implements IGameUno {
             }
         }
     }
-    private String getRandomColor() {
+    @Override
+    public String getRandomColor() {
         String[] colors = {"RED", "BLUE", "GREEN", "YELLOW"}; // Colores disponibles
         Random random = new Random(); // Generador aleatorio
         return colors[random.nextInt(colors.length)]; // Retorna un color aleatorio
@@ -545,6 +551,7 @@ public class GameUno implements IGameUno {
     //Toma una carta del mazo y la agrega a la mano del jugador especificado.
 //También restablece el estado de protección Uno del jugador.
 //@param playerWhoTakes el jugador que toma la carta ("HUMAN_PLAYER" o "MACHINE_PLAYER")
+    @Override
     public void takeCardPlayer(String playerWhoTakes) {
         //pública vacío tomarCartaJugador(String jugadorQueToma)
         // Método que permite a un jugador (humano o máquina) tomar una carta del mazo.
@@ -659,7 +666,7 @@ public class GameUno implements IGameUno {
     //Verifica si el jugador máquina ganó.
 //@return verdadero si ganó, falso en caso contrario
     @Override
-    public Boolean didMachineWin() {
+    public  Boolean didMachineWin() {
         //@Override pública Booleano máquinaGanó()
         // Método que verifica si el jugador máquina ha ganado la partida.
 
@@ -670,6 +677,7 @@ public class GameUno implements IGameUno {
 
     //Rellena el mazo de cartas agregando todas las cartas de la mesa de nuevo al mazo.
 //Este método se llama cuando el mazo se queda sin cartas durante el juego.
+    @Override
     public void refillDeckOfCards() {
         //pública vacío rellenarMazoDeCartas()
         // Método que toma todas las cartas de la mesa, excepto la última, y las devuelve al mazo.
@@ -693,6 +701,7 @@ public class GameUno implements IGameUno {
 
     //Obtiene el mazo de cartas utilizado en el juego.
 //@return el mazo de cartas
+    @Override
     public Deck getDeck() {
         //pública Deck obtenerMazo()
         // Método que devuelve el mazo de cartas utilizado en el juego.
@@ -704,6 +713,7 @@ public class GameUno implements IGameUno {
 
     //Obtiene el color de la carta actual en la mesa.
 //@return el color de la carta
+    @Override
     public void SetCurrentTableCardColor(String Color) {
         //pública String obtenerColorCartaActualMesa()
         // Método que devuelve el color actual de la carta que está en la cima de la mesa.
