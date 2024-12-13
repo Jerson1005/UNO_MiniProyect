@@ -35,6 +35,7 @@ import java.io.IOException;
 // Importa la excepción `IOException` para manejar errores de entrada/salida.
 
 import java.util.ArrayList;
+import java.util.Random;
 //importar java.util.ArrayList
 // Importa la clase `ArrayList`, que se utiliza para manejar listas de cartas.
 
@@ -74,7 +75,7 @@ public class GameUno implements IGameUno {
 //@param machinePlayer el jugador controlado por la IA en el juego
 //@param deck el mazo de cartas de Uno
 //@param table la mesa donde se colocan las cartas durante el juego
-    public GameUno(EventManager eventManager, Player humanPlayer, Player machinePlayer, Deck deck, Table table) {
+    public GameUno(EventManager eventManager, Player humanPlayer, Player machinePlayer, Deck deck, Table table,GameUnoController controller) {
         //pública GameUno(EventManager manejadorEventos, Player jugadorHumano, Player jugadorMáquina, Deck mazo, Table mesa)
         // Constructor de la clase `GameUno` que inicializa los componentes del juego.
 
@@ -101,6 +102,8 @@ public class GameUno implements IGameUno {
         currentTableCardColor = null;
         //colorCartaActualMesa = nulo
         // Inicializa el color actual de la carta en la mesa como `null` (sin color asignado al inicio).
+        this.controller = controller; // Asigna el controlador pasado
+        //currentTableCardColor = null; // Inicializa el color actual de la mesa como nulo
     }
 
     public void initializeStartCard() {
@@ -360,19 +363,26 @@ public class GameUno implements IGameUno {
                     break;
 
                 case "+4":
-                    currentTableCardColor = card.getColor();
+                    eatCard(playerWhoEats, 4);
+                    eventManager.notifyListenersCardsMachinePlayerUpdate();
+                    controller.showColorSelectionPanel();
+                    System.out.println("color" + controller.getColorSelected());
+
+
                     //caso "+4": colorCartaActualMesa = carta.obtenerColor()
                     // Actualiza el color actual de la mesa con el color de la carta jugada.
 
-                    eatCard(playerWhoEats, 4);
+
                     //comerCarta(jugadorQueCome, 4)
                     // El jugador máquina toma 4 cartas adicionales del mazo.
 
-                    eventManager.notifyListenersPlayerTurnUpdate(true);
-                    eventManager.notifyListenersCardsMachinePlayerUpdate();
+               /////     eventManager.notifyListenersPlayerTurnUpdate(true);
+               ////     eventManager.notifyListenersCardsMachinePlayerUpdate();
                     break;
 
                 case "SKIP", "REVERSE":
+
+                   // controller.showColorSelectionPanel();
                     currentTableCardColor = card.getColor();
                     //caso "SKIP", "REVERSE": colorCartaActualMesa = carta.obtenerColor()
                     // Actualiza el color de la carta en la mesa.
@@ -383,7 +393,10 @@ public class GameUno implements IGameUno {
                     break;
 
                 case "WILD":
-                    eventManager.notifyListenersPlayerTurnUpdate(true);
+                    controller.showColorSelectionPanel();
+                    System.out.println("color" + controller.getColorSelected());
+
+                  //  eventManager.notifyListenersPlayerTurnUpdate(true);
                     //caso "WILD": gestorEventos.notificarActualizaciónTurnoJugador(verdadero)
                     // Notifica que el turno del jugador humano continúa después de jugar un comodín.
                     break;
@@ -393,7 +406,7 @@ public class GameUno implements IGameUno {
                     //predeterminado: colorCartaActualMesa = carta.obtenerColor()
                     // Actualiza el color actual de la mesa para cartas normales.
 
-                    eventManager.notifyListenersPlayerTurnUpdate(true);
+                   eventManager.notifyListenersPlayerTurnUpdate(true);
                     //gestorEventos.notificarActualizaciónTurnoJugador(verdadero)
                     // Notifica que el turno continúa.
                     break;
@@ -409,25 +422,44 @@ public class GameUno implements IGameUno {
             switch (card.getValue()) {
                 case "+2":
                     currentTableCardColor = card.getColor();
+                   // System.out.println("coloooooor" + controller.getColorSelected());
+                    //controller.colorMaquina(card.getColor());
                     eatCard(playerWhoEats, 2);
                     eventManager.notifyListenersPlayerTurnUpdate(false);
                     eventManager.notifyListenersCardsHumanPlayerUpdate();
                     break;
 
                 case "+4":
-                    currentTableCardColor = card.getColor();
+
+                    currentTableCardColor = getRandomColor();
+
+                    System.out.println("coloooooor" + controller.getColorSelected());
+                    controller.colorMaquina(currentTableCardColor);
+                    
+                    //controller.handleColorSelection(card.getColor());
                     eatCard(playerWhoEats, 4);
                     eventManager.notifyListenersPlayerTurnUpdate(false);
                     eventManager.notifyListenersCardsHumanPlayerUpdate();
+
                     break;
 
                 case "SKIP", "REVERSE":
                     currentTableCardColor = card.getColor();
+
+                  //  System.out.println("coloooooor" + controller.getColorSelected());
+                    //controller.colorMaquina(card.getColor());
+
                     eventManager.notifyListenersPlayerTurnUpdate(true);
                     break;
 
                 case "WILD":
+                    currentTableCardColor = getRandomColor();
+
+                    System.out.println("coloooooor" + controller.getColorSelected());
+                    controller.colorMaquina(currentTableCardColor);
+
                     eventManager.notifyListenersPlayerTurnUpdate(false);
+
                     break;
 
                 default:
@@ -437,7 +469,11 @@ public class GameUno implements IGameUno {
             }
         }
     }
-
+    private String getRandomColor() {
+        String[] colors = {"RED", "BLUE", "GREEN", "YELLOW"}; // Colores disponibles
+        Random random = new Random(); // Generador aleatorio
+        return colors[random.nextInt(colors.length)]; // Retorna un color aleatorio
+    }
 
     //Maneja la acción cuando un jugador grita "Uno".
 //@param playerWhoSang el identificador del jugador que gritó "Uno"
@@ -668,11 +704,11 @@ public class GameUno implements IGameUno {
 
     //Obtiene el color de la carta actual en la mesa.
 //@return el color de la carta
-    public String getCurrentTableCardColor() {
+    public void SetCurrentTableCardColor(String Color) {
         //pública String obtenerColorCartaActualMesa()
         // Método que devuelve el color actual de la carta que está en la cima de la mesa.
 
-        return currentTableCardColor;
+        this.currentTableCardColor=Color;
         //retornar colorCartaActualMesa
         // Devuelve el color actual de la carta superior en la mesa.
     }

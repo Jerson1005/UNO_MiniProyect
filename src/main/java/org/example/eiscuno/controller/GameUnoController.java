@@ -171,7 +171,7 @@ public class GameUnoController {
 
     @FXML
     private Pane panePlayer;
-    
+
     @FXML
     private Label LabelNotificacions;
 
@@ -183,6 +183,8 @@ public class GameUnoController {
 
     @FXML
     private Button buttonUno;
+    @FXML
+    private Button buttonTakeCard;
 
     private EventManager eventManager;
     //privada EventManager eventManager;
@@ -245,6 +247,22 @@ public class GameUnoController {
     // Hilo que maneja la lógica para finalizar el juego.
     private String stateUno="";
     //Inicializa el controlador.
+
+    @FXML
+    private GridPane gridPaneColor;
+
+    @FXML
+    private Button buttonBlue;
+
+    @FXML
+    private Button buttonGreen;
+
+    @FXML
+    private Button buttonRed;
+
+    @FXML
+    private Button buttonYellow;
+
     @FXML
     void onHandleBlue(ActionEvent event) {
 
@@ -279,7 +297,7 @@ public class GameUnoController {
         paneMachine.setStyle("-fx-border-color: transparent; -fx-border-width: 1px;");
         setNotificationText("Tu turno...");
         buttonUno.setVisible(false);
-        
+       gridPaneColor.setVisible(false);
         initVariables();
         //inicializarVariables()
         // Inicializa las variables necesarias para el funcionamiento del juego.
@@ -304,7 +322,7 @@ public class GameUnoController {
         //hiloJugarMáquina = nuevo ThreadPlayMachine(este.eventManager, este.juegoUno, este.jugadorMáquina, este.imagenMesa)
         // Crea una instancia de `ThreadPlayMachine` para manejar las jugadas automáticas de la máquina.
 
-        
+
         threadPlayMachine.start();
         //hiloJugarMáquina.iniciar()
         // Inicia el hilo `ThreadPlayMachine` para realizar las jugadas de la máquina.
@@ -362,7 +380,7 @@ public class GameUnoController {
         tableImageView.setImage(initialCard.getImage());
 
         // Mensaje de confirmación
-      
+
         System.out.println("Carta inicial colocada en la mesa " + initialCard.getColor() + " " + initialCard.getValue());
     }
 
@@ -421,7 +439,7 @@ public class GameUnoController {
         //este.mesa = nueva Table()
         // Crea una instancia de `Table` que representa la mesa donde se colocan las cartas jugadas.
 
-        this.gameUno = new GameUno(this.eventManager, this.humanPlayer, this.machinePlayer, this.deck, this.table);
+        this.gameUno = new GameUno(this.eventManager, this.humanPlayer, this.machinePlayer, this.deck, this.table,this);
         //este.juegoUno = nuevo GameUno(este.eventManager, este.jugadorHumano, este.jugadorMáquina, este.mazo, este.mesa)
         // Crea una instancia de `GameUno` y le pasa los jugadores, el mazo, la mesa y el manejador de eventos.
 
@@ -457,7 +475,7 @@ public class GameUnoController {
             System.out.println("Uno de los paneles es nulo.");
         }
     }
-    
+
     //Imprime las cartas del jugador humano en el panel de la cuadrícula.
     public void printCardsHumanPlayer() {
         //pública vacío imprimirCartasJugadorHumano()
@@ -507,7 +525,7 @@ public class GameUnoController {
                         humanPlayer.removeCard(findPosCardsHumanPlayer(card));
                         //jugadorHumano.eliminarCarta(encontrarPosiciónCartaJugadorHumano(carta))
                         // Elimina la carta jugada de la mano del jugador humano.
-                        
+
 
 
                         printCardsHumanPlayer();
@@ -621,7 +639,7 @@ public class GameUnoController {
         numberLetters.setStyle("-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);");
     }
 
-    
+
 
     //Maneja la acción del botón "Atrás" para mostrar el conjunto anterior de cartas.
 //@param event el evento de acción
@@ -671,7 +689,7 @@ public class GameUnoController {
     void onHandleTakeCard(ActionEvent event) {
         //@FXML vacío manejarTomarCarta(ActionEvent evento)
 
-        
+
         // Método manejador para que el jugador humano tome una carta.
 
         if (!playerHasPlayed) {
@@ -802,5 +820,127 @@ public class GameUnoController {
     public Button getButtonUno() {
         return buttonUno;
     }
+
+    private String currentTableCardColor; // Guarda el color seleccionado
+
+    // Método para mostrar la selección de color
+    public void showColorSelectionPanel() {
+        // Configurar el GridPane para que sea visible
+        
+        gridPaneColor.setVisible(true);
+        gridPaneCardsPlayer.setDisable(true);
+        buttonTakeCard.setDisable(true);
+        // Configurar los estilos de los botones
+        buttonBlue.setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-weight: bold;");
+        buttonGreen.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;");
+        buttonRed.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;");
+        buttonYellow.setStyle("-fx-background-color: yellow; -fx-text-fill: black; -fx-font-weight: bold;");
+
+        // Configurar eventos para cada botón
+        buttonBlue.setOnAction(event -> handleColorSelection("BLUE"));
+        buttonGreen.setOnAction(event -> handleColorSelection("GREEN"));
+        buttonRed.setOnAction(event -> handleColorSelection("RED"));
+        buttonYellow.setOnAction(event -> handleColorSelection("YELLOW"));
+
+    }
+
+    // Método para manejar la selección del color
+    public void handleColorSelection(String color) {
+        System.out.println("Color seleccionado: " + color);
+
+        // Configura el color actual de la carta en la mesa
+        currentTableCardColor = color;
+
+        // Mostrar solo el botón seleccionado
+
+        resetButtonVisibility(false);
+        switch (color) {
+            case "BLUE":
+                buttonBlue.setVisible(true);
+                break;
+            case "GREEN":
+                buttonGreen.setVisible(true);
+                break;
+            case "RED":
+                buttonRed.setVisible(true);
+                break;
+            case "YELLOW":
+                buttonYellow.setVisible(true);
+                break;
+        }
+
+        // Esperar 2 segundos antes de ocultar el GridPane
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000); // Pausa de 2 segundos
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            // Ocultar el GridPane en el hilo de la interfaz gráfica (JavaFX Application Thread)
+            javafx.application.Platform.runLater(() -> {
+                gridPaneColor.setVisible(false);
+                resetButtonVisibility(true);
+            });
+        }).start();
+
+        gameUno.SetCurrentTableCardColor(currentTableCardColor);
+        eventManager.notifyListenersPlayerTurnUpdate(true);
+
+        System.out.println("Color Oprimido" + currentTableCardColor);
+        gridPaneCardsPlayer.setDisable(false);
+        buttonTakeCard.setDisable(false);
+    }
+
+   public String getColorSelected() {
+        return currentTableCardColor;
+   }
+
+    // Método auxiliar para restablecer la visibilidad de los botones
+    private void resetButtonVisibility(boolean worth) {
+        buttonBlue.setVisible(worth);
+        buttonGreen.setVisible(worth);
+        buttonRed.setVisible(worth);
+        buttonYellow.setVisible(worth);
+    }
+    public void colorMaquina(String color) {
+        buttonBlue.setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-weight: bold;");
+        buttonGreen.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;");
+        buttonRed.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;");
+        buttonYellow.setStyle("-fx-background-color: yellow; -fx-text-fill: black; -fx-font-weight: bold;");
+        
+        System.out.println("Color seleccionado: " + color);
+        gridPaneColor.setVisible(true);
+        resetButtonVisibility(false);
+        switch (color) {
+            case "BLUE":
+                buttonBlue.setVisible(true);
+                break;
+            case "GREEN":
+                buttonGreen.setVisible(true);
+                break;
+            case "RED":
+                buttonRed.setVisible(true);
+                break;
+            case "YELLOW":
+                buttonYellow.setVisible(true);
+                break;
+        }
+
+        // Esperar 2 segundos antes de ocultar el GridPane
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000); // Pausa de 2 segundos
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            // Ocultar el GridPane en el hilo de la interfaz gráfica (JavaFX Application Thread)
+            javafx.application.Platform.runLater(() -> {
+                gridPaneColor.setVisible(false);
+                resetButtonVisibility(true);
+            });
+        }).start();
+
+    }
+
 
 }
