@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ee8ff40-bbdd-4aec-a3d2-cf5cc45130ec" name="Changes" comment="Se termina el juego UNO.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/instructionsStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/controller/GameUnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/GameUno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/IGameUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/model/game/IGameUno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/LoseStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/LoseStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/WinStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/eiscuno/view/WinStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/game-uno-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/button_uno.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/images/uno.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/instructions-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/instructions-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/lose-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/lose-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/win-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/eiscuno/win-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +41,12 @@
     &quot;assignee&quot;: &quot;fabiansvc&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/fabiansvc/eisc-uno.git&quot;,
-    &quot;accountId&quot;: &quot;0c82e6b4-a45c-4190-a110-02ef4a3ff1b6&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Jerson1005/Uno_miniproyect.git",
+    "accountId": "b2e1ffb9-8378-429d-8151-62109ac56ac6"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -81,13 +75,14 @@
     "Maven.eisc-uno [org.apache.maven.plugins:maven-surefire-plugin:2.22.2:help].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "jaov",
+    "git-widget-placeholder": "cvl",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Jerson/IdeaProjectsS/Uno_miniproyect/src/main/resources/org/example/eiscuno",
+    "last_opened_file_path": "C:/Users/Camilo/IdeaProjects/Uno-main",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -105,10 +100,11 @@
       <recent name="A:\IntelliJProyectos\Uno\src\main\resources\org\example\eiscuno" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Camilo\IdeaProjects\Uno_miniproyect\src\main\resources\org\example\eiscuno\images" />
+      <recent name="C:\Users\Camilo\IdeaProjects\Uno_miniproyect\src\main\resources\org\example\eiscuno\gifs" />
+      <recent name="C:\Users\Camilo\IdeaProjects\Uno_miniproyect\src\main\resources\org\example\eiscuno\videos" />
       <recent name="A:\IntelliJProyectos\Uno\src\main\resources\org\example\eiscuno\cards-uno" />
       <recent name="C:\Users\fsvc1\Coding\eisc-uno\src\main\resources\org\example\eiscuno" />
-      <recent name="C:\Users\fsvc1\Coding\eisc-uno\src\main\resources\org\example\eiscuno\images" />
-      <recent name="C:\Users\fsvc1\Coding\eisc-uno\src" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -181,8 +177,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -232,6 +228,7 @@
       <workItem from="1733344398845" duration="4203000" />
       <workItem from="1733501554770" duration="32268000" />
       <workItem from="1733897574768" duration="68579000" />
+      <workItem from="1734185149113" duration="9499000" />
     </task>
     <task id="LOCAL-00001" summary="Agregar iconos y imagenes. Intento de actualizar cartas de la máquina.">
       <option name="closed" value="true" />
