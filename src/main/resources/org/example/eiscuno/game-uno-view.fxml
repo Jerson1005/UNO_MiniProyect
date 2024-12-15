@@ -110,7 +110,7 @@
                </children>
             </Pane>
             <Button layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#onHandleBack" prefHeight="47.0" prefWidth="95.0" stylesheets="@css/index.css" text="Anterior" />
-            <Button layoutX="595.0" layoutY="29.0" mnemonicParsing="false" onAction="#onHandleNext" prefHeight="47.0" prefWidth="99.0" stylesheets="@css/index.css" text="Siguinte" />
+            <Button layoutX="595.0" layoutY="29.0" mnemonicParsing="false" onAction="#onHandleNext" prefHeight="47.0" prefWidth="99.0" stylesheets="@css/index.css" text="Siguiente" />
             <Label fx:id="numberPlayerLetters" alignment="CENTER" layoutX="231.0" layoutY="107.0" prefHeight="29.0" prefWidth="231.0" text="Jugador " />
          </children>
       </AnchorPane>
