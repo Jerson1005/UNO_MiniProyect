@@ -1,47 +1,46 @@
 package org.example.eiscuno.model.player;
-//paquete org.example.eiscuno.modelo.jugador
-// Define el paquete donde se encuentra esta interfaz.
 
 import org.example.eiscuno.model.card.Card;
-//importar org.example.eiscuno.modelo.carta.Carta
-// Importa la clase `Card`, que representa una carta del juego Uno.
-
 import java.util.ArrayList;
-//importar java.util.ArrayList
-// Importa la clase `ArrayList`, utilizada para manejar una lista de cartas en la mano del jugador.
 
-//Interfaz que representa a un jugador en el juego de Uno.
-// Proporciona métodos para interactuar con la mano de cartas del jugador.
+/**
+ * Interface representing a player in the Uno game.
+ * Provides methods to interact with the player's hand of cards.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
+ */
 public interface IPlayer {
-    //pública interfaz IJugador
-    // Define una interfaz llamada `IPlayer` que declara métodos para operaciones en la mano de cartas de un jugador.
 
-    // Agrega una carta a la mano del jugador.
-    //
-    // @param card La carta que se agregará a la mano del jugador.
+    /**
+     * Adds a card to the player's hand.
+     *
+     * @param card The card to be added to the player's hand.
+     */
     void addCard(Card card);
-    //vacío agregarCarta(Carta carta)
-    // Declara un método para agregar una carta a la mano del jugador.
 
-    // Recupera una carta de la mano del jugador basada en su índice.
-    //
-    // @param index El índice de la carta a recuperar.
-    // @return La carta en el índice especificado de la mano del jugador.
+    /**
+     * Retrieves a card from the player's hand based on its index.
+     *
+     * @param index The index of the card to retrieve.
+     * @return The card at the specified index in the player's hand.
+     */
     Card getCard(int index);
-    //Carta obtenerCarta(int índice)
-    // Declara un método que devuelve una carta específica de la mano del jugador, dada su posición (índice).
 
-    // Recupera todas las cartas que actualmente posee el jugador.
-    //
-    // @return Un ArrayList que contiene todas las cartas en la mano del jugador.
+    /**
+     * Retrieves all the cards currently in the player's hand.
+     *
+     * @return An ArrayList containing all the cards in the player's hand.
+     */
     ArrayList<Card> getCardsPlayer();
-    //ArrayList<Carta> obtenerCartasJugador()
-    // Declara un método que devuelve todas las cartas en la mano del jugador en forma de lista.
 
-    // Elimina una carta de la mano del jugador basada en su índice.
-    //
-    // @param index El índice de la carta a eliminar.
+    /**
+     * Removes a card from the player's hand based on its index.
+     *
+     * @param index The index of the card to remove.
+     */
     void removeCard(int index);
-    //vacío eliminarCarta(int índice)
-    // Declara un método para eliminar una carta de la mano del jugador en una posición específica (índice).
 }

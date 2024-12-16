@@ -1,28 +1,31 @@
 package org.example.eiscuno.model.observer;
-// Paquete que contiene la interfaz EventListener, utilizada para manejar eventos del juego de Uno.
 
-
-// Esta interfaz representa un oyente de eventos para el juego de Uno.
-// Define métodos para manejar varios eventos del juego, como los turnos de los jugadores y la actualización de cartas.
+/**
+ * This interface represents an event listener for the Uno game.
+ * It defines methods for handling various game events, such as player turns and card updates.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
+ */
 public interface EventListener {
-    // Define la interfaz EventListener que contiene los métodos para actualizar los eventos del juego.
 
-
-//    Se llama para actualizar al oyente sobre el estado del turno del jugador.
-//     @param playerHasPlayed {@code true} si el jugador ha jugado, {@code false} si no lo ha hecho.
-
+    /**
+     * Called to update the listener about the player's turn state.
+     *
+     * @param playerHasPlayed {@code true} if the player has played, {@code false} otherwise.
+     */
     void updatePlayerTurn(boolean playerHasPlayed);
-    // Este método se utiliza para notificar al oyente si el jugador ha jugado o no.
 
-
-//    Se llama para actualizar al oyente sobre las cartas del jugador máquina.
-
+    /**
+     * Called to update the listener about the machine player's cards.
+     */
     void updateCardsMachinePlayer();
-    // Este método se utiliza para notificar al oyente sobre las cartas del jugador máquina.
 
-
-//     Se llama para actualizar al oyente sobre las cartas del jugador humano.
-
+    /**
+     * Called to update the listener about the human player's cards.
+     */
     void updateCardsHumanPlayer();
-    // Este método se utiliza para notificar al oyente sobre las cartas del jugador humano.
 }

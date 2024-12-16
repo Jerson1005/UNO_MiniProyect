@@ -1,59 +1,55 @@
 package org.example.eiscuno.model.observer;
-//paquete org.example.eiscuno.modelo.observador
-// Define el paquete donde se encuentra esta clase.
 
 import org.example.eiscuno.model.machine.ThreadPlayMachine;
-//importar org.example.eiscuno.modelo.máquina.HiloJuegoMáquina
-// Importa la clase ThreadPlayMachine, que maneja la lógica de juego de la máquina.
 
-//Representa un observador para la clase ThreadPlayMachine.
-// Este observador escucha eventos relacionados con los turnos de los jugadores y actualiza el ThreadPlayMachine en consecuencia.
+/**
+ * Represents an observer for the ThreadPlayMachine class.
+ * This observer listens to events related to the players' turns and updates the ThreadPlayMachine accordingly.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
+ */
 public class ThreadPlayMachineObserver implements EventListener {
-    //publica clase HiloJuegoMáquinaObservador implementa EventListener
-    // Define una clase pública que implementa la interfaz EventListener, permitiéndole actuar como observador.
 
     private ThreadPlayMachine threadPlayMachine;
-    //privada HiloJuegoMáquina hiloJuegoMáquina
-    // Declara una variable privada para referenciar una instancia de ThreadPlayMachine.
 
-    // Actualiza el ThreadPlayMachine cuando cambia el estado del turno del jugador.
-    //
-    // @param playerHasPlayed verdadero si el jugador ha jugado una carta, falso de lo contrario
+    /**
+     * Updates the ThreadPlayMachine when the player turn state changes.
+     *
+     * @param playerHasPlayed {@code true} if the player has played a card, {@code false} otherwise.
+     */
     @Override
     public void updatePlayerTurn(boolean playerHasPlayed) {
-        //sobrescribir vacío actualizarTurnoJugador(booleano jugadorHaJugado)
-        // Implementa el método de la interfaz EventListener que actualiza el turno del jugador.
-
         threadPlayMachine.setHasPlayerPlayed(playerHasPlayed);
-        //hiloJuegoMáquina.establecerJugadorHaJugado(jugadorHaJugado)
-        // Llama al método setHasPlayerPlayed en ThreadPlayMachine para actualizar el estado del turno del jugador.
     }
 
-    // Actualiza el observador con nuevas cartas para el jugador máquina.
-    // Este método no está implementado porque no es necesario en este observador.
+    /**
+     * Updates the observer with new cards for the machine player.
+     * This method is not implemented as it is not necessary in this observer.
+     */
     @Override
     public void updateCardsMachinePlayer() {
-        //sobrescribir vacío actualizarCartasJugadorMáquina()
-        // Implementa el método de la interfaz EventListener, pero no realiza ninguna acción.
+        // No action needed for this method in the context of ThreadPlayMachineObserver.
     }
 
-    // Actualiza el observador con nuevas cartas para el jugador humano.
-    // Este método no está implementado porque no es necesario en este observador.
+    /**
+     * Updates the observer with new cards for the human player.
+     * This method is not implemented as it is not necessary in this observer.
+     */
     @Override
     public void updateCardsHumanPlayer() {
-        //sobrescribir vacío actualizarCartasJugadorHumano()
-        // Implementa el método de la interfaz EventListener, pero no realiza ninguna acción.
+        // No action needed for this method in the context of ThreadPlayMachineObserver.
     }
 
-    // Establece la instancia de ThreadPlayMachine para este observador.
-    //
-    // @param threadPlayMachine la instancia de ThreadPlayMachine a establecer
+    /**
+     * Sets the instance of ThreadPlayMachine for this observer.
+     *
+     * @param threadPlayMachine the ThreadPlayMachine instance to set.
+     */
     public void setThreadPlayMachine(ThreadPlayMachine threadPlayMachine) {
-        //pública vacío establecerHiloJuegoMáquina(HiloJuegoMáquina hiloJuegoMáquina)
-        // Define un método público para asignar una instancia de ThreadPlayMachine a esta clase.
-
         this.threadPlayMachine = threadPlayMachine;
-        //este.hiloJuegoMáquina = hiloJuegoMáquina
-        // Asigna la instancia de ThreadPlayMachine proporcionada a la variable threadPlayMachine.
     }
 }

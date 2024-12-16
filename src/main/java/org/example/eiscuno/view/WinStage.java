@@ -6,11 +6,16 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.eiscuno.model.unoenum.EISCUnoEnum;
-
 import java.io.IOException;
 
 /**
  * Represents a stage displayed when the player wins the game.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
  */
 public class WinStage extends Stage {
 
@@ -25,20 +30,18 @@ public class WinStage extends Stage {
         try {
             root = loader.load();
         } catch (IOException e) {
-            // Re-throwing the caught IOException
             throw new IOException("Error while loading FXML file", e);
         }
 
         Scene scene = new Scene(root);
 
-        // Configuring the stage
-        setTitle("GANASTE"); // Sets the title of the stage
+        setTitle("GANASTE");
         getIcons().add(
                 new Image(
                         String.valueOf(getClass().getResource(EISCUnoEnum.FAVICON.getFilePath()))));
-        setScene(scene); // Sets the scene for the stage
-        setResizable(false); // Disallows resizing of the stage
-        show(); // Displays the stage
+        setScene(scene);
+        setResizable(false);
+        show();
     }
 
     /**

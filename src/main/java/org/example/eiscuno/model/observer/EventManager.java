@@ -1,87 +1,67 @@
 package org.example.eiscuno.model.observer;
-// Paquete que contiene la clase EventManager, que se encarga de gestionar los oyentes de eventos del juego de Uno.
 
 import java.util.ArrayList;
 import java.util.List;
-// Importa las clases necesarias: ArrayList y List, para manejar una lista dinámica de oyentes de eventos.
 
-
-// Esta clase gestiona los oyentes de eventos y les notifica sobre los eventos del juego de Uno.
+/**
+ * This class manages the event listeners and notifies them about the Uno game events.
+ * It allows adding and removing listeners, as well as notifying them about player turns
+ * and updates to the human and machine player's cards.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
+ */
 public class EventManager {
-    // Define la clase EventManager, que gestiona la lista de oyentes y las notificaciones.
 
     private List<EventListener> listeners = new ArrayList<>();
-    // private List<EventListener> listeners = new ArrayList<>();
-    // Crea una lista privada que almacenará los oyentes de eventos (EventListener).
-    // Esta lista se inicializa como un ArrayList vacío.
 
-
-    // Añade un oyente de eventos para que sea notificado sobre los eventos del juego.
+    /**
+     * Adds an event listener to be notified about game events.
+     *
+     * @param eventListener The listener to be added.
+     */
     public void addListener(EventListener eventListener) {
-        // public void addListener(EventListener eventListener) {
-        // Define un método público para añadir un oyente de eventos a la lista de oyentes.
-
         listeners.add(eventListener);
-        // listeners.add(eventListener);
-        // Añade el oyente de eventos a la lista de oyentes.
     }
 
-
-    // Elimina un oyente de eventos de la lista de oyentes.
+    /**
+     * Removes an event listener from the list of listeners.
+     *
+     * @param eventListener The listener to be removed.
+     */
     public void removeListener(EventListener eventListener) {
-        // public void removeListener(EventListener eventListener) {
-        // Define un método público para eliminar un oyente de eventos de la lista de oyentes.
-
         listeners.remove(eventListener);
-        // listeners.remove(eventListener);
-        // Elimina el oyente de eventos de la lista de oyentes.
     }
 
-
-    // Notifica a todos los oyentes registrados sobre la actualización del turno del jugador.
+    /**
+     * Notifies all registered listeners about the player turn update.
+     *
+     * @param playerHasPlayed {@code true} if the player has played, {@code false} otherwise.
+     */
     public void notifyListenersPlayerTurnUpdate(boolean playerHasPlayed) {
-        // public void notifyListenersPlayerTurnUpdate(boolean playerHasPlayed) {
-        // Define un método público para notificar a todos los oyentes sobre la actualización del turno del jugador.
-
         for (EventListener eventListener : listeners) {
-            // for (EventListener eventListener : listeners) {
-            // Recorre la lista de oyentes de eventos.
-
             eventListener.updatePlayerTurn(playerHasPlayed);
-            // eventListener.updatePlayerTurn(playerHasPlayed);
-            // Llama al método updatePlayerTurn de cada oyente, pasando el estado del turno del jugador.
         }
     }
 
-
-    // Notifica a todos los oyentes registrados sobre una actualización de las cartas del jugador humano.
+    /**
+     * Notifies all registered listeners about the update to the human player's cards.
+     */
     public void notifyListenersCardsHumanPlayerUpdate() {
-        // public void notifyListenersCardsHumanPlayerUpdate() {
-        // Define un método público para notificar a todos los oyentes sobre la actualización de las cartas del jugador humano.
-
         for (EventListener eventListener : listeners) {
-            // for (EventListener eventListener : listeners) {
-            // Recorre la lista de oyentes de eventos.
-
             eventListener.updateCardsHumanPlayer();
-            // eventListener.updateCardsHumanPlayer();
-            // Llama al método updateCardsHumanPlayer de cada oyente para notificar sobre las cartas del jugador humano.
         }
     }
 
-
-    // Notifica a todos los oyentes registrados sobre una actualización de las cartas del jugador máquina.
+    /**
+     * Notifies all registered listeners about the update to the machine player's cards.
+     */
     public void notifyListenersCardsMachinePlayerUpdate() {
-        // public void notifyListenersCardsMachinePlayerUpdate() {
-        // Define un método público para notificar a todos los oyentes sobre la actualización de las cartas del jugador máquina.
-
         for (EventListener eventListener : listeners) {
-            // for (EventListener eventListener : listeners) {
-            // Recorre la lista de oyentes de eventos.
-
             eventListener.updateCardsMachinePlayer();
-            // eventListener.updateCardsMachinePlayer();
-            // Llama al método updateCardsMachinePlayer de cada oyente para notificar sobre las cartas del jugador máquina.
         }
     }
 }
