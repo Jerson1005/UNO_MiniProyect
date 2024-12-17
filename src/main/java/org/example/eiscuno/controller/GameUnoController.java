@@ -331,12 +331,12 @@ public class GameUnoController {
                         printCardsHumanPlayer();
 
                     } catch (UnoException e) {
-                        LabelNotificacions.setText("Cannot place that card");
+                        LabelNotificacions.setText("No puedes colocar esa carta");
                         System.out.println(e.getMessage());
                     }
                 } else {
-                    LabelNotificacions.setText("It's not your turn");
-                    System.out.println("It's not your turn.");
+                    LabelNotificacions.setText("No es tu turno");
+                    System.out.println("No es tu turno.");
                 }
             });
 
@@ -457,7 +457,7 @@ public class GameUnoController {
             }
         } else {
             LabelNotificacions.setText("No es tu turno");
-            System.out.println("It's not your turn.");
+            System.out.println("No es tu turno.");
         }
     }
 
@@ -570,16 +570,16 @@ public class GameUnoController {
         currentTableCardColor = color;
         resetButtonVisibility(false);
         switch (color) {
-            case "BLUE":
+            case "AZUL":
                 buttonBlue.setVisible(true);
                 break;
-            case "GREEN":
+            case "VERDE":
                 buttonGreen.setVisible(true);
                 break;
-            case "RED":
+            case "ROJO":
                 buttonRed.setVisible(true);
                 break;
-            case "YELLOW":
+            case "AMARILLO":
                 buttonYellow.setVisible(true);
                 break;
         }
@@ -641,16 +641,16 @@ public class GameUnoController {
         gridPaneColor.setVisible(true);
         resetButtonVisibility(false);
         switch (color) {
-            case "BLUE":
+            case "AZUL":
                 buttonBlue.setVisible(true);
                 break;
-            case "GREEN":
+            case "VERDE":
                 buttonGreen.setVisible(true);
                 break;
-            case "RED":
+            case "ROJO":
                 buttonRed.setVisible(true);
                 break;
-            case "YELLOW":
+            case "AMARILLO":
                 buttonYellow.setVisible(true);
                 break;
         }
