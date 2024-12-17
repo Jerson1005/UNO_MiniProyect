@@ -35,7 +35,7 @@ public class LoseStage extends Stage {
 
         Scene scene = new Scene(root);
 
-        setTitle("PERDISTE");
+        setTitle("UNO");
         getIcons().add(
                 new Image(
                         String.valueOf(getClass().getResource(EISCUnoEnum.FAVICON.getFilePath()))));

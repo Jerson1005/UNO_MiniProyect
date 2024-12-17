@@ -776,19 +776,20 @@ public class GameUnoController {
         currentTableCardColor = color;
         resetButtonVisibility(false);
         switch (color) {
-            case "AZUL":
+            case "BLUE":
                 buttonBlue.setVisible(true);
                 break;
-            case "VERDE":
+            case "GREEN":
                 buttonGreen.setVisible(true);
                 break;
-            case "ROJO":
+            case "RED":
                 buttonRed.setVisible(true);
                 break;
-            case "AMARILLO":
+            case "YELLOW":
                 buttonYellow.setVisible(true);
                 break;
         }
+
         new Thread(() -> {
             try {
                 Thread.sleep(2000);
@@ -838,6 +839,7 @@ public class GameUnoController {
      * @since 1.0
      */
     public void colorMaquina(String color) {
+
         buttonBlue.setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-weight: bold;");
         buttonGreen.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;");
         buttonRed.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;");
@@ -847,16 +849,16 @@ public class GameUnoController {
         gridPaneColor.setVisible(true);
         resetButtonVisibility(false);
         switch (color) {
-            case "AZUL":
+            case "BLUE":
                 buttonBlue.setVisible(true);
                 break;
-            case "VERDE":
+            case "GREEN":
                 buttonGreen.setVisible(true);
                 break;
-            case "ROJO":
+            case "RED":
                 buttonRed.setVisible(true);
                 break;
-            case "AMARILLO":
+            case "YELLOW":
                 buttonYellow.setVisible(true);
                 break;
         }

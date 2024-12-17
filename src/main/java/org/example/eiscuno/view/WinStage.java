@@ -35,7 +35,7 @@ public class WinStage extends Stage {
 
         Scene scene = new Scene(root);
 
-        setTitle("GANASTE");
+        setTitle("UNO");
         getIcons().add(
                 new Image(
                         String.valueOf(getClass().getResource(EISCUnoEnum.FAVICON.getFilePath()))));

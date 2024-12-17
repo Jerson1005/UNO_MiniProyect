@@ -37,7 +37,7 @@ public class GameUnoStage extends Stage {
 
         Scene scene = new Scene(root);
 
-        setTitle("EISC Uno");
+        setTitle("UNO");
         getIcons().add(
                 new Image(
                         String.valueOf(getClass().getResource(EISCUnoEnum.FAVICON.getFilePath()))));
