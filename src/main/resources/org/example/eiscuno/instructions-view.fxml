@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane prefHeight="480.0" prefWidth="600.0" stylesheets="@css/styles-instructions.css" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Objetivo">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea editable="false" layoutX="9.0" layoutY="14.0" prefHeight="85.0" prefWidth="577.0" text="Ser el primer jugador en quedarse sin cartas, evitando&#10;que tu contrincante pueda lograrlo.&#10;">
+                           <font>
+                              <Font name="Bookman Old Style" size="20.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="306.0" fitWidth="565.0" layoutX="26.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/b1b4ab2e-4558-4b5e-ac39-f11a922bffbc_car_16x9.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Fases del Juego">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="153.0" fitWidth="283.0" layoutX="13.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/giphy.gif" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" layoutX="12.0" layoutY="14.0" prefHeight="191.0" prefWidth="274.0" text="Reparto: Cada jugador recibe 5 &#10;cartas al inicio del juego.&#10;&#10;Inicio de la partida: El juego &#10;comienza con una carta en el &#10;centro como pila de descarte.&#10;">
+                           <font>
+                              <Font name="Bookman Old Style" size="16.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="191.0" fitWidth="286.0" layoutX="300.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/360_F_389180451_0ci46ol8IOpHodxpLROToXap8g4QBEo2.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" layoutX="298.0" layoutY="217.0" prefHeight="168.0" prefWidth="290.0" text="Turnos: Los jugadores deben &#10;descartar una carta que coincida, &#10;o robar del mazo si no tienen &#10;cartas jugables.&#10;&#10;Final: Gana quien se quede sin &#10;cartas y grite &quot;UNO&quot; al tener &#10;una sola carta.">
+                           <font>
+                              <Font name="Bookman Old Style" size="16.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Reglas">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="172.0" fitWidth="258.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/FTWRPMI6YZAUZFCL66XOBSEJ44.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" layoutX="284.0" layoutY="14.0" prefHeight="398.0" prefWidth="297.0" text="1. Una carta se coloca boca arriba en la &#10;pila de descarte para iniciar el juego, el &#10;resto de las cartas forman el mazo de robo.&#10;&#10;&#10;2. En su turno, el/la jugador(a) debe jugar &#10;una carta que coincida en color, número o &#10;símbolo con la carta superior de la pila de &#10;descarte. Los botones de &quot;anterior&quot; y &#10;&quot;siguiente&quot; permiten desplazarse por el total &#10;de cartas, si este es mayor a 5.&#10;Si no puede jugar una carta, debe robar &#10;una del mazo y pierde el turno.&#10;&#10;&#10;3. Si el/la jugador(a) tiene una sola carta, &#10;debe presionar el botón &quot;UNO&quot;. Si no lo hace &#10;rápidamente, roba una (1) carta como &#10;penalización.&#10;&#10;&#10;4. El primer jugador en quedarse sin &#10;cartas gana la partida.&#10;&#10;&#10;">
+                           <font>
+                              <Font name="Bookman Old Style" size="12.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="261.0" fitWidth="271.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/blue-reverse-card-uno.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Tipos de Cartas">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="121.0" fitWidth="133.0" layoutX="237.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/uno-uno-card-game%20(1).gif" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" layoutX="15.0" layoutY="14.0" prefHeight="195.0" prefWidth="566.0" text="Cartas numéricas: Del 0 al 9 en cuatro colores (rojo, azul, verde, amarillo).&#10;&#10;&#10;Cartas de acción:&#10;&#10;   - Salta: El siguiente jugador pierde su turno.&#10;   - Reversa: Cambia la dirección del juego.&#10;   - +2: El siguiente jugador roba 2 cartas y pierde su turno.&#10;   - Comodín de color: Permite elegir el color de juego.&#10;   - Comodín +4: Cambia el color y obliga al siguiente jugador a robar 4 cartas.&#10;">
+                           <font>
+                              <Font name="Bookman Old Style" size="12.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="121.0" fitWidth="133.0" layoutX="461.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/uno-uno-card-game.gif" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="108.0" fitWidth="71.0" layoutX="43.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/collin-gale-hd-uno.gif" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="108.0" fitWidth="71.0" layoutX="150.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/green-draw-two-card-clipart-xl.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="111.0" fitWidth="72.0" layoutX="372.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/IMG_mOJzWU6oMyaD.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -1,15 +1,23 @@
 package org.example.eiscuno.model.unoenum;
 
 /**
- * Enum EISCUnoEnum
+ * Enum that defines the file paths for the images used in the EISC Uno game.
  *
- * This enum represents the various file paths for the images used in the EISC Uno game.
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
  */
 public enum EISCUnoEnum {
+
     FAVICON("favicon.png"),
     UNO("images/uno.png"),
     BACKGROUND_UNO("images/background_uno.png"),
     BUTTON_UNO("images/button_uno.png"),
+    BUTTON_EXIT("images/button_exit.png"),
+    BUTTON_BACK("images/button_back.png"),
+    BUTTON_NEXT("images/button_next.png"),
     CARD_UNO("cards-uno/card_uno.png"),
     DECK_OF_CARDS("cards-uno/deck_of_cards.png"),
     WILD("cards-uno/wild.png"),
@@ -22,10 +30,10 @@ public enum EISCUnoEnum {
     SKIP_YELLOW("cards-uno/skip_yellow.png"),
     SKIP_GREEN("cards-uno/skip_green.png"),
     SKIP_RED("cards-uno/skip_red.png"),
-    RESERVE_BLUE("cards-uno/reserve_blue.png"),
-    RESERVE_YELLOW("cards-uno/reserve_yellow.png"),
-    RESERVE_GREEN("cards-uno/reserve_green.png"),
-    RESERVE_RED("cards-uno/reserve_red.png"),
+    REVERSE_BLUE("cards-uno/reverse_blue.png"),
+    REVERSE_YELLOW("cards-uno/reverse_yellow.png"),
+    REVERSE_GREEN("cards-uno/reverse_green.png"),
+    REVERSE_RED("cards-uno/reverse_red.png"),
     GREEN_0("cards-uno/0_green.png"),
     GREEN_1("cards-uno/1_green.png"),
     GREEN_2("cards-uno/2_green.png"),
@@ -68,21 +76,22 @@ public enum EISCUnoEnum {
     RED_9("cards-uno/9_red.png");
 
     private final String filePath;
+
     private static final String PATH = "/org/example/eiscuno/";
 
     /**
-     * Constructor for the EISCUnoEnum enum.
+     * Constructor for the EISCUnoEnum enumeration.
      *
-     * @param filePath the file path of the image relative to the base directory
+     * @param filePath the relative path of the image file.
      */
     EISCUnoEnum(String filePath) {
         this.filePath = PATH + filePath;
     }
 
     /**
-     * Gets the full file path of the image.
+     * Gets the full path of the image file.
      *
-     * @return the full file path of the image
+     * @return the full path of the image file.
      */
     public String getFilePath() {
         return filePath;

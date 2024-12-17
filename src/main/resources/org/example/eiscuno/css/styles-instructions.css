@@ -1,0 +1,33 @@
+/* Fondo del TabPane */
+.tab-pane {
+    -fx-background-color: #E66B4E;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+/* Pestañas individuales */
+.tab {
+    -fx-background-color: #4E77E6;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Bookman Old Style";
+    -fx-font-style: Regular;
+    -fx-font-size: 12px;
+    -fx-padding: 5px;
+}
+
+/* Hover en pestañas */
+.tab:hover {
+    -fx-background-color: #4EC6E6
+}
+
+/* Pestaña seleccionada */
+.tab:selected {
+    -fx-background-color: #E6974E;
+    -fx-text-fill: #ffffff;
+}
+
+/* Área del encabezado de las pestañas */
+.tab-header-area {
+    -fx-padding: 5px; /* Agrega espacio en el área de encabezado */
+}
+

@@ -3,13 +3,21 @@ package org.example.eiscuno.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
+import javafx.stage.StageStyle;
+import org.example.eiscuno.model.unoenum.EISCUnoEnum;
 import java.io.IOException;
 
 /**
- * Represents the main stage of the Uno game application.
- * This stage displays the game interface to the user.
+ * Represents the main window of the Uno game application.
+ * This window displays the game's user interface.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
  */
 public class GameUnoStage extends Stage {
 
@@ -24,20 +32,24 @@ public class GameUnoStage extends Stage {
         try {
             root = loader.load();
         } catch (IOException e) {
-            // Re-throwing the caught IOException
             throw new IOException("Error while loading FXML file", e);
         }
+
         Scene scene = new Scene(root);
-        // Configuring the stage
-        setTitle("EISC Uno"); // Sets the title of the stage
-        setScene(scene); // Sets the scene for the stage
-        setResizable(false); // Disallows resizing of the stage
-        show(); // Displays the stage
+
+        setTitle("UNO");
+        getIcons().add(
+                new Image(
+                        String.valueOf(getClass().getResource(EISCUnoEnum.FAVICON.getFilePath()))));
+        setScene(scene);
+        setResizable(false);
+        initStyle(StageStyle.UNDECORATED);
+        show();
     }
 
     /**
      * Closes the instance of GameUnoStage.
-     * This method is used to clean up resources when the game stage is no longer needed.
+     * This method is used to clean up resources when the game window is no longer needed.
      */
     public static void deleteInstance() {
         GameUnoStageHolder.INSTANCE.close();
