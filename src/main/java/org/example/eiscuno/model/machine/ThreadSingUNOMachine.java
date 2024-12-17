@@ -1,8 +1,5 @@
 package org.example.eiscuno.model.machine;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 import org.example.eiscuno.controller.GameUnoController;
 import org.example.eiscuno.model.card.Card;
 import org.example.eiscuno.model.game.GameUno;
