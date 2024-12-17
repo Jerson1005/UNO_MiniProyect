@@ -18,7 +18,6 @@ public class UnoException extends Exception {
      */
     public UnoException() {
         super("This is a custom exception message.");
-        // Calls the superclass constructor with a default error message.
     }
 
     /**
@@ -27,7 +26,6 @@ public class UnoException extends Exception {
      */
     public UnoException(String message) {
         super(message);
-        // Calls the superclass constructor with the specified message.
     }
 
     /**
@@ -37,7 +35,6 @@ public class UnoException extends Exception {
      */
     public UnoException(String message, Throwable cause) {
         super(message, cause);
-        // Calls the superclass constructor with the specified message and cause.
     }
 
     /**
@@ -46,6 +43,5 @@ public class UnoException extends Exception {
      */
     public UnoException(Throwable cause) {
         super(cause);
-        // Calls the superclass constructor with the specified cause.
     }
 }
