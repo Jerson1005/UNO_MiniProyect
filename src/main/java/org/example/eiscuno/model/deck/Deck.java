@@ -1,50 +1,39 @@
 package org.example.eiscuno.model.deck;
-// paquete org.example.eiscuno.modelo.baraja;
-// Define el paquete al que pertenece esta clase, que organiza las clases relacionadas con la baraja de cartas en el juego.
 
 import org.example.eiscuno.model.unoenum.EISCUnoEnum;
-// importar org.example.eiscuno.modelo.unoenum.EISCUnoEnum;
-// Importa la enumeración `EISCUnoEnum`, que contiene los valores representativos de las cartas de Uno.
-
 import org.example.eiscuno.model.card.Card;
-// importar org.example.eiscuno.modelo.carta.Carta;
-// Importa la clase `Card`, que representa una carta del juego Uno.
-
 import java.util.ArrayList;
-// importar java.util.ArrayList;
-// Importa la clase `ArrayList` para manejar colecciones de cartas.
-
 import java.util.Collections;
-// importar java.util.Collections;
-// Importa la clase `Collections` para realizar operaciones como mezclar las cartas.
-
 import java.util.Stack;
-// importar java.util.Stack;
-// Importa la clase `Stack`, que se utiliza como la estructura de datos para almacenar las cartas.
 
-// Representa una baraja de cartas de Uno.
+/**
+ * Represents a deck of Uno cards.
+ * This class is responsible for managing the deck, including card creation, shuffling,
+ * and drawing cards during the Uno game.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
+ */
 public class Deck {
-    private Stack<Card> deckOfCards;
-    // pila<Carta> barajaDeCartas;
-    // Una pila que contiene todas las cartas de la baraja.
 
-    // Construye una nueva baraja de cartas de Uno y la inicializa.
+    private Stack<Card> deckOfCards;
+
+    /**
+     * Constructs a new Uno deck and initializes it with cards.
+     */
     public Deck() {
         deckOfCards = new Stack<>();
-        // barajaDeCartas = nueva Pila<>();
-        // Inicializa la pila de cartas.
-
         initializeDeck();
-        // inicializarBaraja();
-        // Llama al método para agregar e inicializar las cartas en la baraja.
     }
 
-    // Inicializa la baraja con cartas basadas en los valores de EISCUnoEnum.
+    /**
+     * Initializes the deck by adding cards based on the EISCUnoEnum values.
+     */
     private void initializeDeck() {
         for (EISCUnoEnum cardEnum : EISCUnoEnum.values()) {
-            // para cada EISCUnoEnum cartaEnum en EISCUnoEnum.valores() {
-            // Itera sobre todos los valores de la enumeración `EISCUnoEnum`.
-
             if (cardEnum.name().startsWith("GREEN_") ||
                     cardEnum.name().startsWith("YELLOW_") ||
                     cardEnum.name().startsWith("BLUE_") ||
@@ -54,28 +43,20 @@ public class Deck {
                     cardEnum.name().startsWith("TWO_WILD_DRAW_") ||
                     cardEnum.name().equals("FOUR_WILD_DRAW") ||
                     cardEnum.name().equals("WILD")) {
-                // si el nombre de la cartaEnum comienza con colores o acciones específicas
-                // Verifica que el nombre del valor de la enumeración coincide con las categorías deseadas.
 
                 Card card = new Card(cardEnum.getFilePath(), getCardValue(cardEnum.name()), getCardColor(cardEnum.name()));
-                // Carta carta = nueva Carta(cartaEnum.obtenerRutaArchivo(), obtenerValorCarta(cartaEnum.nombre()), obtenerColorCarta(cartaEnum.nombre()));
-                // Crea una nueva instancia de `Card` con la ruta de archivo, valor y color obtenidos.
-
                 deckOfCards.push(card);
-                // barajaDeCartas.apilar(carta);
-                // Añade la carta creada a la pila.
-
                 System.out.println(card.getValue() + " " + card.getColor());
-                // sistema.imprimir(carta.obtenerValor() + " " + carta.obtenerColor());
-                // Imprime el valor y color de la carta creada para verificación.
             }
         }
         Collections.shuffle(deckOfCards);
-        // Collections.mezclar(barajaDeCartas);
-        // Mezcla las cartas de la baraja para aleatorizarlas.
     }
 
-    // Extrae el valor del nombre de una carta.
+    /**
+     * Extracts the value from a card name.
+     * @param name the name of the card.
+     * @return the value of the card.
+     */
     private String getCardValue(String name) {
         if (name.endsWith("0")) {
             return "0";
@@ -110,10 +91,13 @@ public class Deck {
         } else {
             return null;
         }
-        // Extrae y devuelve el valor basado en el nombre de la carta.
     }
 
-    // Extrae el color del nombre de una carta.
+    /**
+     * Extracts the color from a card name.
+     * @param name the name of the card.
+     * @return the color of the card.
+     */
     private String getCardColor(String name) {
         if (name.contains("GREEN")) {
             return "GREEN";
@@ -126,44 +110,44 @@ public class Deck {
         } else {
             return "NON_COLOR";
         }
-        // Devuelve el color de la carta o "SIN_COLOR" si no tiene un color específico.
     }
 
-    // Toma una carta de la parte superior de la baraja.
+    /**
+     * Draws a card from the top of the deck.
+     * @return the top card of the deck.
+     * @throws IllegalStateException if the deck is empty.
+     */
     public Card takeCard() {
         if (deckOfCards.isEmpty()) {
             throw new IllegalStateException("Deck is empty. Wait for it to be refilled.");
-            // lanzar nueva ExcepciónEstadoIlegal("La baraja está vacía. Espere a que se recargue.");
-            // Lanza una excepción si la baraja está vacía.
         }
         return deckOfCards.pop();
-        // retornar barajaDeCartas.desapilar();
-        // Retira y devuelve la carta superior de la baraja.
     }
 
-    // Devuelve el número de cartas en la baraja.
+    /**
+     * Returns the number of cards in the deck.
+     * @return the size of the deck.
+     */
     public int size() {
         return deckOfCards.size();
-        // retornar barajaDeCartas.tamaño();
-        // Devuelve el tamaño actual de la pila de cartas.
     }
 
-    // Verifica si la baraja está vacía.
+    /**
+     * Checks if the deck is empty.
+     * @return true if the deck is empty, false otherwise.
+     */
     public boolean isEmpty() {
         return deckOfCards.isEmpty();
-        // retornar barajaDeCartas.estaVacía();
-        // Devuelve verdadero si la pila no contiene cartas.
     }
 
-    // Rellena la baraja con las cartas dadas y mezcla la baraja.
+    /**
+     * Refills the deck with the given list of cards and shuffles it.
+     * @param allCardsInTableButLastOne the list of cards to add to the deck.
+     */
     public void refillDeck(ArrayList<Card> allCardsInTableButLastOne) {
         for (Card card : allCardsInTableButLastOne) {
             deckOfCards.push(card);
-            // barajaDeCartas.apilar(carta);
-            // Añade cada carta del listado a la pila de la baraja.
         }
         Collections.shuffle(deckOfCards);
-        // Collections.mezclar(barajaDeCartas);
-        // Mezcla las cartas de la baraja después de recargarla.
     }
 }

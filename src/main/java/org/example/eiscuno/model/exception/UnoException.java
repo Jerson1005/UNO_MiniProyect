@@ -1,36 +1,51 @@
 package org.example.eiscuno.model.exception;
-// paquete org.example.eiscuno.modelo.excepción;
-// Define el paquete al que pertenece esta clase, que organiza las clases relacionadas con excepciones personalizadas.
 
+/**
+ * Custom exception class for handling Uno game-specific errors.
+ * This class extends the base {@link Exception} class to provide
+ * more specific exception handling for the Uno game logic.
+ *
+ * @author Jerson Alexis Ortiz Velasco
+ * @author Jhon Antony Murillo Olave
+ * @author Camilo Vidales Lucumi
+ * @version 1.0
+ * @since 1.0
+ */
 public class UnoException extends Exception {
-// clase UnoException extiende Excepción;
-// Define una clase `UnoException` que extiende de `Exception` para crear una excepción personalizada relacionada con el juego Uno.
 
-    // Construye una nueva UnoException con un mensaje de error predeterminado.
+    /**
+     * Constructs a new UnoException with a default error message.
+     */
     public UnoException() {
         super("This is a custom exception message.");
-        // super("Este es un mensaje de excepción personalizado.");
-        // Llama al constructor de la clase base `Exception` con un mensaje predeterminado.
+        // Calls the superclass constructor with a default error message.
     }
 
-    // Construye una nueva UnoException con el mensaje de error especificado.
+    /**
+     * Constructs a new UnoException with the specified error message.
+     * @param message the error message.
+     */
     public UnoException(String message) {
         super(message);
-        // super(mensaje);
-        // Llama al constructor de la clase base `Exception` con un mensaje específico proporcionado.
+        // Calls the superclass constructor with the specified message.
     }
 
-    // Construye una nueva UnoException con el mensaje de error especificado y la causa.
+    /**
+     * Constructs a new UnoException with the specified error message and cause.
+     * @param message the error message.
+     * @param cause the cause of the exception (a Throwable).
+     */
     public UnoException(String message, Throwable cause) {
         super(message, cause);
-        // super(mensaje, causa);
-        // Llama al constructor de la clase base `Exception` con un mensaje y una causa proporcionados.
+        // Calls the superclass constructor with the specified message and cause.
     }
 
-    // Construye una nueva UnoException con la causa especificada.
+    /**
+     * Constructs a new UnoException with the specified cause.
+     * @param cause the cause of the exception (a Throwable).
+     */
     public UnoException(Throwable cause) {
         super(cause);
-        // super(causa);
-        // Llama al constructor de la clase base `Exception` con la causa proporcionada.
+        // Calls the superclass constructor with the specified cause.
     }
 }

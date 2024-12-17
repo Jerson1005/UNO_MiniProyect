@@ -40,7 +40,7 @@ public class Table {
      */
     public Card getCurrentCardOnTheTable() throws IndexOutOfBoundsException {
         if (cardsTable.isEmpty()) {
-            throw new IndexOutOfBoundsException("There are no cards on the table.");
+            throw new IndexOutOfBoundsException("No hay cartas sobre la mesa.");
         }
         return this.cardsTable.get(this.cardsTable.size() - 1);
     }

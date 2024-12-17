@@ -49,7 +49,7 @@ public class ThreadPlayMachine extends Thread {
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
             if (hasPlayerPlayed) {
-                controller.setNotificationText("Machine's turn...");
+                controller.setNotificationText("Turno de la máquina...");
                 controller.setborderPane("-fx-border-color: transparent; -fx-border-width: 1px;", "-fx-border-color: #FFD700; -fx-border-width: 5px;");
                 try {
                     Thread.sleep(2000);
@@ -69,7 +69,7 @@ public class ThreadPlayMachine extends Thread {
                 }
 
                 eventManager.notifyListenersCardsMachinePlayerUpdate();
-                controller.setNotificationText("Your turn...");
+                controller.setNotificationText("Tu turno...");
                 controller.setborderPane("-fx-border-color: #FFD700; -fx-border-width: 5px;", "-fx-border-color: transparent; -fx-border-width: 1px;");
             }
         }
@@ -86,7 +86,7 @@ public class ThreadPlayMachine extends Thread {
             try {
                 Card card = machinePlayer.getCardsPlayer().get(cardIndex);
                 gameUno.playCard(card, "MACHINE_PLAYER");
-                System.out.println("Machine player placed a card.");
+                System.out.println("La máquina descartó una carta.");
                 machinePlayer.removeCard(cardIndex);
                 tableImageView.setImage(card.getImage());
                 validPlacement = true;
@@ -109,7 +109,7 @@ public class ThreadPlayMachine extends Thread {
         while (!cardTaken) {
             try {
                 gameUno.takeCardPlayer("MACHINE_PLAYER");
-                System.out.println("Machine player took a card.");
+                System.out.println("La máquina comió una carta.");
                 hasPlayerPlayed = false;
                 eventManager.notifyListenersPlayerTurnUpdate(hasPlayerPlayed);
                 cardTaken = true;

@@ -35,7 +35,7 @@ public class InstructionsStage extends Stage {
 
         Scene scene = new Scene(root);
 
-        setTitle("INSTRUCIONES");
+        setTitle("INSTRUCCIONES");
         getIcons().add(
                 new Image(
                         String.valueOf(getClass().getResource(EISCUnoEnum.FAVICON.getFilePath()))));

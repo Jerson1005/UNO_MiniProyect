@@ -516,7 +516,7 @@ public class GameUnoController {
                         //juegoUno.jugarCarta(carta, "HUMAN_PLAYER")
                         // Llama al método `playCard` para jugar la carta seleccionada.
 
-                        System.out.println("Human player placed a card.");
+                        System.out.println("El jugador descartó una carta.");
                         //System.out.println("El jugador humano colocó una carta.")
                         // Imprime un mensaje en la consola indicando que el jugador jugó una carta.
 
@@ -707,7 +707,7 @@ public class GameUnoController {
                 //imprimirCartasJugadorHumano()
                 // Actualiza la visualización de las cartas del jugador humano.
                 LabelNotificacions.setText("Tamaste una Carta de la baraja");
-                System.out.println("Human player took a card.");
+                System.out.println("El jugador comió una carta.");
                 //System.out.println("El jugador humano tomó una carta.")
                 // Mensaje informativo en la consola.
 
