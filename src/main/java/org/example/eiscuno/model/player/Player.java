@@ -15,15 +15,40 @@ import java.util.ArrayList;
  */
 public class Player implements IPlayer {
 
+    /**
+     * List of cards held by the player.
+     * This list contains all the cards currently in the player's hand.
+     *
+     * @serial
+     * @since 1.0
+     */
     private ArrayList<Card> cardsPlayer;
+
+    /**
+     * Type of the player (e.g., "HUMAN_PLAYER" or "MACHINE_PLAYER").
+     * This string identifies the role or type of the player in the game.
+     *
+     * @serial
+     * @since 1.0
+     */
     private String typePlayer;
+
+    /**
+     * Indicates whether the player is protected after declaring "UNO."
+     * This variable is marked as volatile to ensure thread-safe access in concurrent operations.
+     *
+     * @serial
+     * @since 1.0
+     */
     private volatile boolean isProtectedByUno;
+
 
     /**
      * Constructs a new Player object with an empty hand of cards.
      *
      * @param typePlayer The type of the player (e.g., human or computer).
      */
+
     public Player(String typePlayer) {
         this.cardsPlayer = new ArrayList<Card>();
         this.typePlayer = typePlayer;
@@ -76,6 +101,7 @@ public class Player implements IPlayer {
      *
      * @param protectedByUno true if the player is protected by UNO, false otherwise.
      */
+    @Override
     public void setProtectedByUno(boolean protectedByUno) {
         isProtectedByUno = protectedByUno;
     }
@@ -85,6 +111,7 @@ public class Player implements IPlayer {
      *
      * @return true if the player is protected by UNO, false otherwise.
      */
+    @Override
     public boolean isProtectedByUno() {
         return isProtectedByUno;
     }

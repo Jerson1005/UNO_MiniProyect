@@ -23,13 +23,71 @@ import java.util.Random;
  */
 public class GameUno implements IGameUno {
 
+    /**
+     * Manages events and notifies listeners about game state updates.
+     *
+     * @serial
+     * @since 1.0
+     */
     private EventManager eventManager;
+
+    /**
+     * Represents the human player in the game.
+     * This player interacts with the game interface and makes moves manually.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Player humanPlayer;
+
+    /**
+     * Represents the machine (AI) player in the game.
+     * This player makes automated moves based on game logic.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Player machinePlayer;
+
+    /**
+     * The deck of cards used in the game.
+     * This object holds and manages the cards to be played or drawn.
+     *
+     * @serial
+     * @since 1.0
+     * @see Deck
+     */
     private Deck deck;
+
+    /**
+     * Represents the table where cards are played during the game.
+     * This includes the current card on the table.
+     *
+     * @serial
+     * @since 1.0
+     * @see Table
+     */
     private Table table;
+
+    /**
+     * The current color of the card on the table.
+     * This is updated whenever a special card (e.g., WILD) sets a new color.
+     *
+     * @serial
+     * @since 1.0
+     */
     private String currentTableCardColor;
+
+    /**
+     * The controller responsible for managing the game's interface and user interactions.
+     * It links the model with the view.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUnoController
+     */
     private GameUnoController controller;
+
 
     /**
      * Constructs a GameUno instance, initializing the players, deck, table, and event manager.

@@ -16,7 +16,16 @@ import java.util.List;
  */
 public class EventManager {
 
+    /**
+     * List of event listeners registered to observe and handle events.
+     * Each listener in the list will respond to specific events triggered during the game.
+     *
+     * @serial
+     * @since 1.0
+     * @see EventListener
+     */
     private List<EventListener> listeners = new ArrayList<>();
+
 
     /**
      * Adds an event listener to be notified about game events.

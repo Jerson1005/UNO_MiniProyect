@@ -43,4 +43,23 @@ public interface IPlayer {
      * @param index The index of the card to remove.
      */
     void removeCard(int index);
+
+    /**
+     * Sets the protected status of the player regarding the "UNO" state.
+     * This method is used to mark whether the player is protected after declaring "UNO."
+     *
+     * @param protectedByUno {@code true} if the player is protected, {@code false} otherwise.
+     * @since 1.0
+     */
+    void setProtectedByUno(boolean protectedByUno);
+
+    /**
+     * Checks whether the player is protected by the "UNO" state.
+     * This indicates if the player has successfully declared "UNO" when they had only one card.
+     *
+     * @return {@code true} if the player is protected by "UNO," {@code false} otherwise.
+     * @since 1.0
+     */
+    boolean isProtectedByUno();
+
 }

@@ -19,12 +19,56 @@ import java.util.ArrayList;
  */
 public class ThreadSingUNOMachine implements Runnable {
 
+    /**
+     * List of cards held by the human player.
+     *
+     * @serial
+     * @since 1.0
+     * @see Card
+     */
     private ArrayList<Card> cardsPlayer;
+
+    /**
+     * List of cards held by the machine player.
+     *
+     * @serial
+     * @since 1.0
+     * @see Card
+     */
     private ArrayList<Card> cardsMachine;
+
+    /**
+     * Represents the machine player in the game.
+     * This object handles the logic and state of the machine player.
+     *
+     * @serial
+     * @since 1.0
+     * @see Player
+     */
     private Player machinePlayer;
+
+    /**
+     * Manages the core game logic of UNO.
+     * Controls the rules, turns, and game state.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUno
+     */
     private GameUno gameUno;
+
+    /**
+     * Reference to the main game controller.
+     * Manages the interaction between the game model and the user interface.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUnoController
+     */
     private GameUnoController controller;
-    private Player player;
+
+
+
 
     /**
      * Constructor for ThreadSingUNOMachine.

@@ -14,11 +14,47 @@ import javafx.scene.image.ImageView;
  * @since 1.0
  */
 public class Card {
+    /**
+     * URL representing the file path of the card image.
+     *
+     * @serial
+     * @since 1.0
+     */
     private String url;
+
+    /**
+     * Value of the card, such as a number (0-9) or action (e.g., "+2", "SKIP").
+     *
+     * @serial
+     * @since 1.0
+     */
     private String value;
+
+    /**
+     * Color of the card, such as "RED", "BLUE", "GREEN", or "YELLOW".
+     * For special cards (e.g., WILD), this can be "NON_COLOR".
+     *
+     * @serial
+     * @since 1.0
+     */
     private String color;
+
+    /**
+     * Image instance representing the visual representation of the card.
+     *
+     * @serialField
+     * @since 1.0
+     */
     private Image image;
+
+    /**
+     * ImageView instance used to display the card in the user interface.
+     *
+     * @serialField
+     * @since 1.0
+     */
     private ImageView cardImageView;
+
 
     /**
      * Constructs a new Card object with the specified URL, value, and color.

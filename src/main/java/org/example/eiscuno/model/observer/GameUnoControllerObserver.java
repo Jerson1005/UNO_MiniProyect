@@ -16,6 +16,14 @@ import org.example.eiscuno.controller.GameUnoController;
  */
 public class GameUnoControllerObserver implements EventListener {
 
+    /**
+     * Controller responsible for managing the game logic and user interface interactions.
+     * It facilitates communication between the game model and the graphical interface.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUnoController
+     */
     private GameUnoController gameUnoController;
 
     /**

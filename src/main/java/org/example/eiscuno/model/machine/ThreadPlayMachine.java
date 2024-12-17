@@ -21,12 +21,66 @@ import java.util.Random;
  */
 public class ThreadPlayMachine extends Thread {
 
+    /**
+     * Manages and notifies event listeners within the UNO game.
+     * It facilitates communication between components of the game logic.
+     *
+     * @serial
+     * @since 1.0
+     * @see EventManager
+     */
     private EventManager eventManager;
+
+    /**
+     * Represents the main game logic of UNO.
+     * This class controls the rules, player turns, and game flow.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUno
+     */
     private GameUno gameUno;
+
+    /**
+     * Represents the machine player in the UNO game.
+     * It holds the cards and manages the automated gameplay logic.
+     *
+     * @serial
+     * @since 1.0
+     * @see Player
+     */
     private Player machinePlayer;
+
+    /**
+     * Displays the current card on the table in the game.
+     * This image view shows the visual representation of the top card on the table.
+     *
+     * @serialField
+     * @since 1.0
+     * @see ImageView
+     */
     private ImageView tableImageView;
+
+    /**
+     * Indicates whether the player has already played their turn.
+     * This flag is used for synchronization in multi-threaded gameplay scenarios.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUnoController
+     */
     private volatile boolean hasPlayerPlayed;
+
+    /**
+     * The controller that manages the interactions between the UI and the game logic.
+     * It coordinates user inputs and updates the game state.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUnoController
+     */
     private GameUnoController controller;
+
 
     /**
      * Constructs a new thread for machine player.

@@ -18,8 +18,26 @@ import java.io.IOException;
  */
 public class ThreadEndGame extends Thread {
 
+    /**
+     * The controller that manages the interaction between the game logic and the user interface.
+     * It handles user inputs, updates the UI, and communicates with the game model.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUnoController
+     */
     private GameUnoController gameUnoController;
+
+    /**
+     * Represents the core logic of the UNO game.
+     * It handles the rules, game state, and interactions between players.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUno
+     */
     private GameUno gameUno;
+
 
     /**
      * Constructs a new ThreadEndGame instance.

@@ -14,7 +14,15 @@ import java.util.ArrayList;
  */
 public class Table {
 
+    /**
+     * List of cards currently on the table.
+     * This list maintains all the cards played during the game and placed on the table.
+     *
+     * @serial
+     * @since 1.0
+     */
     private ArrayList<Card> cardsTable;
+
 
     /**
      * Constructs a new Table object with no cards.

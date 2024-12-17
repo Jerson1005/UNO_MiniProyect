@@ -18,7 +18,14 @@ import java.util.Stack;
  * @since 1.0
  */
 public class Deck {
-
+    /**
+     * Stack representing the deck of cards in the game.
+     * This stack stores all the cards in the deck, allowing operations such as
+     * drawing a card from the top of the stack.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Stack<Card> deckOfCards;
 
     /**

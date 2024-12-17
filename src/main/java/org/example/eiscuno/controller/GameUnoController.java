@@ -47,89 +47,295 @@ import java.io.IOException;
  */
 public class GameUnoController {
 
+    /**
+     * GridPane containing the cards of the machine player.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private GridPane gridPaneCardsMachine;
 
+    /**
+     * GridPane containing the cards of the human player.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private GridPane gridPaneCardsPlayer;
 
+    /**
+     * ImageView for displaying the deck button image.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private ImageView deckButtonImageView;
 
+    /**
+     * ImageView for displaying the current table card.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private ImageView tableImageView;
 
+    /**
+     * Pane representing the machine player's visual area.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Pane paneMachine;
 
+    /**
+     * Pane representing the human player's visual area.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Pane panePlayer;
 
+    /**
+     * Label used to display notifications in the game.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Label LabelNotificacions;
 
+    /**
+     * Label displaying the number of cards the machine player holds.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Label numberMachineLetters;
 
+    /**
+     * Label displaying the number of cards the human player holds.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Label numberPlayerLetters;
 
+    /**
+     * Button for the player to declare "UNO".
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Button buttonUno;
 
+    /**
+     * Button for the player to take a card from the deck.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Button buttonTakeCard;
 
+    /**
+     * String representing the current color of the table card.
+     *
+     * @serial
+     * @since 1.0
+     */
     private String currentTableCardColor;
 
+    /**
+     * Event manager for managing game events.
+     *
+     * @serial
+     * @since 1.0
+     */
     private EventManager eventManager;
 
+    /**
+     * Observer for managing updates in the game controller.
+     *
+     * @serial
+     * @since 1.0
+     */
     private GameUnoControllerObserver gameUnoObserver;
 
+    /**
+     * Observer for monitoring the play machine thread.
+     *
+     * @serial
+     * @since 1.0
+     */
     private ThreadPlayMachineObserver threadPlayMachineObserver;
 
+    /**
+     * Player instance representing the human player.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Player humanPlayer;
 
+    /**
+     * Player instance representing the machine player.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Player machinePlayer;
 
+    /**
+     * Deck instance representing the card deck used in the game.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Deck deck;
 
+    /**
+     * Table instance representing the game table where cards are placed.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Table table;
 
+    /**
+     * GameUno instance representing the core game logic.
+     *
+     * @serial
+     * @since 1.0
+     */
     private GameUno gameUno;
 
+    /**
+     * Position index for the initial card to show.
+     *
+     * @serial
+     * @since 1.0
+     */
     private int posInitCardToShow;
 
+    /**
+     * Boolean flag indicating whether the player has played.
+     *
+     * @serial
+     * @since 1.0
+     */
     private boolean playerHasPlayed;
 
+    /**
+     * Stage representing the current game window.
+     *
+     * @serial
+     * @since 1.0
+     */
     private Stage stage;
 
+    /**
+     * Thread managing the UNO declaration for the machine player.
+     *
+     * @serial
+     * @since 1.0
+     */
     private ThreadSingUNOMachine threadSingUNOMachine;
 
+    /**
+     * Thread handling the machine player's turn logic.
+     *
+     * @serial
+     * @since 1.0
+     */
     private ThreadPlayMachine threadPlayMachine;
 
+    /**
+     * Thread managing the refill of the card deck.
+     *
+     * @serial
+     * @since 1.0
+     */
     private ThreadRefillDeck threadRefillDeck;
 
+    /**
+     * Thread managing the end-game logic.
+     *
+     * @serial
+     * @since 1.0
+     */
     private ThreadEndGame threadEndGame;
+
+    /**
+     * String representing the current state of the UNO declaration.
+     *
+     * @serial
+     * @since 1.0
+     */
     private String stateUno = "";
 
+    /**
+     * GridPane used for color selection during "WILD" or "+4" card effects.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private GridPane gridPaneColor;
 
+    /**
+     * Button representing the blue color selection.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Button buttonBlue;
 
+    /**
+     * Button representing the green color selection.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Button buttonGreen;
 
+    /**
+     * Button representing the red color selection.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Button buttonRed;
 
+    /**
+     * Button representing the yellow color selection.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     private Button buttonYellow;
 
+    /**
+     * BorderPane representing the main layout of the game interface.
+     *
+     * @serialField
+     * @since 1.0
+     */
     @FXML
     BorderPane gameBorderPane;
+
 
     /**
      * Handles the event of opening the instructions window.

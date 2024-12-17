@@ -14,7 +14,16 @@ import org.example.eiscuno.model.game.GameUno;
  */
 public class ThreadRefillDeck extends Thread {
 
+    /**
+     * Manages the core game logic of UNO.
+     * This object controls the gameplay flow, rules, player actions, and turn management.
+     *
+     * @serial
+     * @since 1.0
+     * @see GameUno
+     */
     private GameUno gameUno;
+
 
     /**
      * Constructor for ThreadRefillDeck.

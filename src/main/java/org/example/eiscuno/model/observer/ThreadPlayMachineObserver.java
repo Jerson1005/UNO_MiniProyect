@@ -14,6 +14,15 @@ import org.example.eiscuno.model.machine.ThreadPlayMachine;
  */
 public class ThreadPlayMachineObserver implements EventListener {
 
+    /**
+     * Thread responsible for managing the machine player's actions during the game.
+     * This thread automates the machine's moves and ensures they are performed
+     * asynchronously to the main game flow.
+     *
+     * @serial
+     * @since 1.0
+     * @see ThreadPlayMachine
+     */
     private ThreadPlayMachine threadPlayMachine;
 
     /**
